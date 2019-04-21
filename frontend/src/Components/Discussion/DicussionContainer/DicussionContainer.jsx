@@ -1,5 +1,5 @@
-import React, { Component } from './node_modules/react';
-import { List } from './node_modules/semantic-ui-react'
+import React, { Component } from 'react';
+import { List, Button } from 'semantic-ui-react';
 
 class DiscussionContainer extends Component {
     state = { 
@@ -21,12 +21,21 @@ class DiscussionContainer extends Component {
                 { /* Course Name Component goes here */}
                 { /* Metrics Component goes here */}
                 { /* Discussion/Reviews button Component goes here */}
+                <div>
+                    <Button attached='left'>Reviews</Button>
+                    <Button attached='right'>Discussion</Button>
+                </div>
 
+
+
+
+                { /* this is the list of comments  */}
                 <div>
                     <List divided relaxed>
                         {
-                            this.state.DiscussionPosts.map(p => (
-                                <List.Item>
+                            this.state.DiscussionPosts.map((p,i) => (
+                                <List.Item key={i}>
+                                    <List.Icon name='comment' size='small'  verticalAlign='top'/>
                                     <List.Content>
                                         <List.Header>{p.user}</List.Header>
                                         <List.Description>{p.post}</List.Description>
@@ -36,24 +45,11 @@ class DiscussionContainer extends Component {
                         }
                     </List>
                 </div>
+
+
             </div>
         )
     }
 }
-        return ( <div>
-            { /* Course Name Component goes here */}
-            { /* Metrics Component goes here */}
-            { /* Discussion/Reviews button Component goes here */}
 
-            <div>
-                <List divided relaxed>
-                    {this.state.DiscussionPosts.map(p =>(
-                        <List.Item></List.Item>
-                            
-                        </List.Item>
-                    )}
-                </List>
-            </div>
-                )}}
-
-                export default
+export default DiscussionContainer;
