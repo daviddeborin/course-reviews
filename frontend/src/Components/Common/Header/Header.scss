@@ -19,6 +19,8 @@ $header-height: 120px;
 .header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    position: relative; // If you use position absolute, it will find the first position relative
     background-color: $header-color;
     height: $header-height;
 
@@ -26,7 +28,7 @@ $header-height: 120px;
         font-family: Mosk;
         font-weight: bold;
         background: #0099FF;
-        float: right;
+        float: left;
     }
     
     img {
@@ -36,7 +38,11 @@ $header-height: 120px;
     }
 
     h1 {
-        font-family: Mosk;
+        // absolute relative to the header
+        position: absolute; // overrides align-items & justify
+        left: 50%; 
+        transform: translate(-50%, -25%); // 50% of the text box's width
+        font-family: Mosk; 
         font-size: 60px;
         color: white;
     }
