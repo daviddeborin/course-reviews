@@ -1,0 +1,45 @@
+@font-face {
+    font-family: Graviola;
+    src: url('../../../assets/fonts/Graviola-Regular.otf');
+}
+
+@font-face {
+    font-family: Mosk;
+    src: url("../../../assets/fonts/Mosk_Typeface/Mosk Medium 500.ttf"),
+         url("../../../assets/fonts/Mosk_Typeface/Mosk Normal 400.ttf");
+}
+
+$header-color: #0099FF;
+$header-height: 120px;
+
+#header-container {
+    height: $header-height;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $header-color;
+    height: $header-height;
+
+    img {
+        height: 50px;
+        margin: 3px;
+    }
+
+    h1 {
+        font-family: Mosk;
+        font-size: 60px;
+        color: white;
+    }
+
+    .ui.button {
+        font-family: Mosk;
+        font-weight: bold;
+    }
+
+    .login {
+        margin: 4px;
+    }
+}
