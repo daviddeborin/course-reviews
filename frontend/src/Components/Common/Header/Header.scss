@@ -18,25 +18,27 @@ $header-height: 120px;
 
 .header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     background-color: $header-color;
     height: $header-height;
 
+    .ui.button {
+        font-family: Mosk;
+        font-weight: bold;
+        background: #0099FF;
+        float: right;
+    }
+    
     img {
         height: 50px;
-        margin: 3px;
+        margin: 4px;
+        background: #0099FF;
     }
 
     h1 {
         font-family: Mosk;
         font-size: 60px;
         color: white;
-    }
-
-    .ui.button {
-        font-family: Mosk;
-        font-weight: bold;
     }
 
     .login {

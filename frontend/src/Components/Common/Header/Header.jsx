@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Icon } from "semantic-ui-react";
+import { Button, Icon, Image } from "semantic-ui-react";
 import "./Header.scss";
 
 class Header extends Component {
@@ -8,9 +8,8 @@ class Header extends Component {
     return (
       <div id="header-container">
         <div className="header">
-          <img src={require("../../../assets/images/book.png")} alt="home" />
           <Button icon>
-            <Icon name="world" />
+            <img src={require("../../../assets/images/book.png")} alt="home" />
           </Button>
           <h1>The Course Review</h1>
           <div className="button-container">
