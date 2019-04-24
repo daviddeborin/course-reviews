@@ -1,0 +1,20 @@
+import React, { Component } from "react";
+import Header from "../../components/common/header/Header";
+import CourseSearchBar from "../../components/common/courseSearchBar/CourseSearchBar";
+import "./HomePage.scss";
+
+class HomePage extends Component {
+  state = {};
+  render() {
+    return (
+      <div>
+        <Header />
+        <div id="search-container">
+          <CourseSearchBar />
+        </div>
+      </div>
+    );
+  }
+}
+
+export default HomePage;
