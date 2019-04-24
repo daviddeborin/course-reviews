@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Segment, Tab } from "semantic-ui-react";
 import DiscussionContainer from "../discussion/dicussionContainer/DicussionContainer";
 
+// the content of the tab
 const panes = [
   {
     menuItem: "Reviews",

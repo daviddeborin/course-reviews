@@ -13,6 +13,14 @@ const source = _.times(5, () => ({
 }));
 
 class CourseSearchBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading : false,
+      value: defaultMessage,
+      results: [],
+    }
+  }
 
   resetDefault = () => {
     if (this.state.value === defaultMessage) {
@@ -20,12 +28,8 @@ class CourseSearchBar extends Component {
     }
   }
 
-  componentWillMount() {
-    this.resetComponent();
-  }
-
   resetComponent = () =>
-    this.setState({ isLoading: false, results: [], value: defaultMessage });
+    this.setState({ isLoading: false, results: [], value: "" });
 
   handleResultSelect = (e, { result }) =>
     this.setState({ value: result.title });
