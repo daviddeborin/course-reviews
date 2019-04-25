@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Segment, Tab } from "semantic-ui-react";
-import DiscussionContainer from "./discussion/dicussionContainer/DicussionContainer";
+import DiscussionContainer from "./discussion/discussionContainer/DiscussionContainer";
 
 // the content of the tab
 const panes = [

@@ -61,6 +61,7 @@ class DiscussionContainer extends Component {
             <Modal.Description />
           </Modal.Content>
         </Modal>
+
         {/* this is the list of comments  */}
         <div>
           <List divided relaxed>
