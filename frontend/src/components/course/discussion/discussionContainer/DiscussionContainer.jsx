@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { List, Button, Modal } from "semantic-ui-react";
+import DiscussionForm from "../discussionForm/DiscussionForm";
 
 class DiscussionContainer extends Component {
   state = {
@@ -58,7 +59,7 @@ class DiscussionContainer extends Component {
         <Modal trigger={<Button>New Post</Button>}>
           <Modal.Header>New Post</Modal.Header>
           <Modal.Content>
-            <Modal.Description />
+            <DiscussionForm />
           </Modal.Content>
         </Modal>
 
