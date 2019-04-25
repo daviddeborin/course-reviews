@@ -13,12 +13,16 @@ class Header extends Component {
           </Button>
           <h1>The Course Review</h1>
           <div className="button-container">
-            <Button className="login" inverted basic color="white">
-              Login
-            </Button>
-            <Button className="login" inverted basic color="white">
-              Signup
-            </Button>
+            <a href="/login">
+              <Button className="login" inverted basic color="white">
+                Login
+              </Button>
+            </a>
+            <a href="/register">
+              <Button className="login" inverted basic color="white">
+                Signup
+              </Button>
+            </a>
           </div>
         </div>
       </div>
