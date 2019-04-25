@@ -11,13 +11,10 @@ class App extends Component {
       <div className="App">
         <HomePage />
         <Router>
-          <div>
+          <div id="app-body-container">
             <Switch>
               {/* <Route exact path="/" component={} /> */}
-              <Route
-                path="/courses/:subject/:courseNumber/discussion"
-                component={Course}
-              />
+              <Route path="/courses/" component={Course} />
             </Switch>
           </div>
         </Router>
