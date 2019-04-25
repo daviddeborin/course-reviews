@@ -6,6 +6,7 @@ import HomePage from "./components/home/HomePage";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 import Header from "./components/common/header/Header";
+import Footer from "./components/common/footer/Footer";
 
 class App extends Component {
   render() {
@@ -22,7 +23,7 @@ class App extends Component {
             </Switch>
           </div>
         </Router>
-        <footer />
+        {/* <Footer /> */}
       </div>
     );
   }
