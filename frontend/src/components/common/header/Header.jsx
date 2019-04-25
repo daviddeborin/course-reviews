@@ -7,7 +7,7 @@ class Header extends Component {
   render() {
     return (
       <div id="header-container">
-        <div className="header">
+        <div id="header">
           <Button icon>
             <img src={require("../../../assets/images/book.png")} alt="home" />
           </Button>
