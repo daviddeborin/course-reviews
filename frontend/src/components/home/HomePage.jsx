@@ -8,7 +8,6 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <Header />
         <div id="search-container">
           <CourseSearchBar />
         </div>
