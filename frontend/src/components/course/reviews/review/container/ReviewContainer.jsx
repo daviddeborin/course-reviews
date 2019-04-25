@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { List, Button, Modal } from "semantic-ui-react";
 import Review from "../Review";
+import ReviewForm from "../../reviewForm/ReviewForm";
 
 class ReviewContainer extends Component {
   state = {
@@ -19,7 +20,10 @@ class ReviewContainer extends Component {
         {/* button to add post */}
         <Modal trigger={<Button>New Review</Button>}>
           <Modal.Header>New Review</Modal.Header>
-          <Modal.Content />
+
+          <Modal.Content>
+            <ReviewForm />
+          </Modal.Content>
         </Modal>
 
         {/* this is the list of comments  */}
