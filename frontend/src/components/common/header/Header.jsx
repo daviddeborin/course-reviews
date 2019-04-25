@@ -8,10 +8,17 @@ class Header extends Component {
     return (
       <div id="header-container">
         <div id="header">
-          <Button icon>
-            <img src={require("../../../assets/images/book.png")} alt="home" />
-          </Button>
-          <h1>The Course Review</h1>
+          <a href="/">
+            <Button icon>
+              <img
+                src={require("../../../assets/images/book.png")}
+                alt="home"
+              />
+            </Button>
+          </a>
+          <a href="/">
+            <h1>The Course Review</h1>
+          </a>
           <div className="button-container">
             <a href="/login">
               <Button className="login" inverted basic color="white">
