@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import { Segment, Tab } from "semantic-ui-react";
 import DiscussionContainer from "./discussion/discussionContainer/DiscussionContainer";
+import ReviewContainer from "./reviews/review/container/ReviewContainer";
 
 // the content of the tab
 const panes = [
   {
     menuItem: "Reviews",
-    render: () => <Tab.Pane>Tab 1 Content</Tab.Pane>
+    render: () => (
+      <Tab.Pane>
+        <ReviewContainer />
+      </Tab.Pane>
+    )
   },
   {
     menuItem: "Discussion",
