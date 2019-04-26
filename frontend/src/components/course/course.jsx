@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Segment, Tab } from "semantic-ui-react";
+import { Segment, Tab, Menu, Input } from "semantic-ui-react";
 import DiscussionContainer from "./discussion/discussionContainer/DiscussionContainer";
 import ReviewContainer from "./reviews/review/container/ReviewContainer";
 
@@ -30,7 +30,16 @@ class Course extends Component {
     return (
       <div>
         {/*  Course Title  */}
-        <h1>CS 498 Applied Machine Learning</h1>
+        {/* <h1>CS 498 Applied Machine Learning</h1> */}
+        <Menu borderless>
+          <Menu.Item position="left">
+            <h1>CS 498 Applied Machine Learning</h1>
+          </Menu.Item>
+
+          <Menu.Item position="right">
+            <Input placeholder="Search" />
+          </Menu.Item>
+        </Menu>
 
         {/*  Metrics Dashboard   */}
         <Segment.Group horizontal>

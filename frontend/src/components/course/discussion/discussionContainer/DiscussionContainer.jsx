@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { List, Button, Modal } from "semantic-ui-react";
 import DiscussionForm from "../discussionForm/DiscussionForm";
+import "./DiscussionContainer.scss";
 
 class DiscussionContainer extends Component {
   state = {
@@ -56,13 +57,14 @@ class DiscussionContainer extends Component {
     return (
       <div>
         {/* button to add post */}
-        <Modal trigger={<Button>New Post</Button>}>
-          <Modal.Header>New Post</Modal.Header>
-          <Modal.Content>
-            <DiscussionForm />
-          </Modal.Content>
-        </Modal>
-
+        <div>
+          <Modal trigger={<Button id="new-post-btn">New Post</Button>}>
+            <Modal.Header>New Post</Modal.Header>
+            <Modal.Content>
+              <DiscussionForm />
+            </Modal.Content>
+          </Modal>
+        </div>
         {/* this is the list of comments  */}
         <div>
           <List divided relaxed>

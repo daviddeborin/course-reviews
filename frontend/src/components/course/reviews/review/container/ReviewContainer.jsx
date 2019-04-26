@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { List, Button, Modal } from "semantic-ui-react";
 import Review from "../Review";
 import ReviewForm from "../../reviewForm/ReviewForm";
+import "./ReviewContainer.scss";
 
 class ReviewContainer extends Component {
   state = {
@@ -18,7 +19,7 @@ class ReviewContainer extends Component {
     return (
       <div>
         {/* button to add post */}
-        <Modal trigger={<Button>New Review</Button>}>
+        <Modal trigger={<Button id="new-rev-btn">New Review</Button>}>
           <Modal.Header>New Review</Modal.Header>
 
           <Modal.Content>
