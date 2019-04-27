@@ -12,6 +12,15 @@
 $header-color: #0099ff;
 $header-height: 120px;
 
+#header-alt {
+  font-family: Mosk;
+  background: #0099ff;
+}
+#header-alt-brand {
+  font-size: 20pt;
+  padding: 10px;
+}
+
 #header-container {
   height: $header-height;
 }

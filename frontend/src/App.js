@@ -7,12 +7,13 @@ import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 import Header from "./components/common/header/Header";
 import Footer from "./components/common/footer/Footer";
+import HeaderAlt from "./components/common/header/HeaderAlt";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <HeaderAlt />
         <Router>
           <div id="app-body-container">
             <Switch>
