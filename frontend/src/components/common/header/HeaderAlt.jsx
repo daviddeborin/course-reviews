@@ -19,7 +19,7 @@ class HeaderAlt extends Component {
         <Container>
           <Menu.Item position="left" id="header-alt-brand">
             <Icon name="book" />
-            Course Review
+            CourseReview
           </Menu.Item>
           <Menu.Item position="right">
             <Button as="a" inverted={!fixed}>
