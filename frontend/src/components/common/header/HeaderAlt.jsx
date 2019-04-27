@@ -17,15 +17,20 @@ class HeaderAlt extends Component {
         id="header-alt"
       >
         <Container>
+        <a href="/">
           <Menu.Item position="left" id="header-alt-brand">
             <Icon name="book" />
             CourseReview
           </Menu.Item>
+          </a>
           <Menu.Item position="right">
-            <Button as="a" inverted={!fixed}>
+          
+            <Button href="/login" as="a" inverted={!fixed}>
               Log in
             </Button>
+            
             <Button
+            href="/register"
               as="a"
               inverted={!fixed}
               primary={fixed}
