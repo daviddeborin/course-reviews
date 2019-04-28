@@ -1,14 +1,18 @@
-import React, { Component } from "react";
-import { Rating, Button, Grid, Dropdown, Menu } from "semantic-ui-react";
+import React, { Head, Component } from "react";
+import { Button, Grid, Dropdown, Menu } from "semantic-ui-react";
 import "./ReviewForm.scss";
+import StarRatings from './react-star-ratings';
 
 class ReviewForm extends Component {
-
-  state = {
-    terms: [],
-    years: [],
-    professors: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      terms: [],
+      years: [],
+      professors: ["Wade", "Geoffrey", "Angrave"],
+      rating: 1
+    };
+  }
 
   getYears = startYear => {
     let x = [];
@@ -19,6 +23,18 @@ class ReviewForm extends Component {
     return x;
   };
 
+  getProfessors = () => {
+    let i = -1;
+    return this.state.professors.map(prof => {
+      i++;
+      return { key: i, text: prof, value: i };
+    });
+  };
+
+  changeRating = (nextValue, prevValue, name) => {
+    this.setState({ rating: nextValue });
+  };
+
   render() {
     const terms = [
       { key: 1, text: "Fall", value: 1 },
@@ -27,13 +43,9 @@ class ReviewForm extends Component {
       { key: 4, text: "Winter", value: 4 }
     ];
 
-    const years = [
-      { key: 1, text: "Fall", value: 1 },
-      { key: 2, text: "Spring", value: 2 }
-    ];
-
     return (
       <div id="review-container">
+
         <div className="strip" id="logistics">
           <Grid textAlign="center" columns={3}>
             <Grid.Column id="term">
@@ -56,12 +68,19 @@ class ReviewForm extends Component {
               <Dropdown
                 placeholder="Professor"
                 clearable
-                options={years}
+                options={this.getProfessors()}
                 selection
               />
             </Grid.Column>
             <Grid.Row />
           </Grid>
+          <StarRatings
+          rating={this.state.rating}
+          starRatedColor="blue"
+          changeRating={this.changeRating}
+          numberOfStars={6}
+          name='rating'
+        />
         </div>
       </div>
 
