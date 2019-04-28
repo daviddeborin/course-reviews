@@ -1,7 +1,7 @@
-import React, { Head, Component } from "react";
-import { Button, Grid, Dropdown, Menu } from "semantic-ui-react";
+import React, { Component } from "react";
+import { Segment, Button, Grid, Dropdown, Menu } from "semantic-ui-react";
 import "./ReviewForm.scss";
-import StarRatings from './react-star-ratings';
+import Ratings from 'react-ratings-declarative';
 
 class ReviewForm extends Component {
   constructor(props) {
@@ -10,7 +10,9 @@ class ReviewForm extends Component {
       terms: [],
       years: [],
       professors: ["Wade", "Geoffrey", "Angrave"],
-      rating: 1
+      rating: 1,
+      difficulty: 1,
+      hours: '1-4'
     };
   }
 
@@ -31,9 +33,41 @@ class ReviewForm extends Component {
     });
   };
 
-  changeRating = (nextValue, prevValue, name) => {
+  changeRating = (nextValue) => {
     this.setState({ rating: nextValue });
   };
+
+  changeDifficulty = (nextValue) => {
+    this.setState({ difficulty: nextValue });
+  };
+
+  getColor = () => {
+    const rate = this.state.difficulty;
+    if (rate == 1) {
+      return 'green';
+    }
+    if (rate == 2) {
+      return 'olive';
+    }
+
+    if (rate == 3) {
+      return 'gold';
+    }
+
+    if (rate == 4) {
+      return 'orange';
+    }
+
+    if (rate == 5) {
+      return 'red';
+    }
+  }
+
+  changeHours = (event, data) => {
+    this.setState({hours: data.children})
+  }
+
+
 
   render() {
     const terms = [
@@ -74,13 +108,52 @@ class ReviewForm extends Component {
             </Grid.Column>
             <Grid.Row />
           </Grid>
-          <StarRatings
-          rating={this.state.rating}
-          starRatedColor="blue"
-          changeRating={this.changeRating}
-          numberOfStars={6}
-          name='rating'
-        />
+          <div class='rating'>
+            <div>
+              Hours spent per week:
+            </div>
+            <Button.Group size='large' toggle>
+              <Button onClick={this.changeHours} active={this.state.hours === '1-4'}>1-4</Button>
+              <Button onClick={this.changeHours} active={this.state.hours === '5-9'}>5-9</Button>
+              <Button onClick={this.changeHours} active={this.state.hours === '10-14'}>10-14</Button>
+              <Button onClick={this.changeHours} active={this.state.hours === '15-19'}>15-19</Button>
+              <Button onClick={this.changeHours} active={this.state.hours === '20+'}>20+</Button>
+            </Button.Group>
+          </div>
+          <div class='rating'>
+            <div>
+              Rating:
+            </div>
+            <Ratings
+              rating={this.state.rating}
+              widgetRatedColors={'gold'}
+              changeRating={this.changeRating}
+              widgetHoverColors={'gold'}
+            >
+              <Ratings.Widget/>
+              <Ratings.Widget/>
+              <Ratings.Widget/>
+              <Ratings.Widget/>
+              <Ratings.Widget />
+            </Ratings>
+          </div>
+          <div class='rating'>
+            <div>
+              Difficulty:
+            </div>
+            <Ratings
+              rating={this.state.difficulty}
+              widgetRatedColors={this.getColor()}
+              changeRating={this.changeDifficulty}
+              widgetHoverColors={this.getColor()}
+            >
+              <Ratings.Widget/>
+              <Ratings.Widget/>
+              <Ratings.Widget/>
+              <Ratings.Widget/>
+              <Ratings.Widget />
+            </Ratings>
+          </div>
         </div>
       </div>
 

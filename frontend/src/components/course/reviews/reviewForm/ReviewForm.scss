@@ -8,3 +8,18 @@
 #review-container {
     margin: auto;
 }
+
+.rating{
+    display: flex;
+    align-items: center;
+    
+
+    div {
+        font-size: 2em;
+        margin-right: 20px;
+
+        font-family: Mosk;
+        src: url("../../../../assets/fonts/Mosk_Typeface/Mosk Medium 500.ttf"),
+            url("../../../../assets/fonts/Mosk_Typeface/Mosk Normal 400.ttf");
+    }
+}
