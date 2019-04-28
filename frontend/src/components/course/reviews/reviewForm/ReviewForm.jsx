@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Segment, Button, Grid, Dropdown, Menu } from "semantic-ui-react";
+import { Form, Button, Grid, Dropdown, TextArea } from "semantic-ui-react";
 import "./ReviewForm.scss";
 import Ratings from 'react-ratings-declarative';
 
@@ -43,23 +43,17 @@ class ReviewForm extends Component {
 
   getColor = () => {
     const rate = this.state.difficulty;
-    if (rate == 1) {
-      return 'green';
-    }
-    if (rate == 2) {
-      return 'olive';
-    }
-
-    if (rate == 3) {
-      return 'gold';
-    }
-
-    if (rate == 4) {
-      return 'orange';
-    }
-
-    if (rate == 5) {
-      return 'red';
+    switch (rate) {
+      case 1:
+        return 'green';
+      case 2:
+        return 'yellowgreen';
+      case 3:
+        return 'gold';
+      case 4:
+        return 'orange';
+      default:
+        return 'red';
     }
   }
 
@@ -154,31 +148,22 @@ class ReviewForm extends Component {
               <Ratings.Widget />
             </Ratings>
           </div>
+
+          <div>
+            <p>
+              Anything else?
+            </p>
+            <Form>
+              <TextArea placeholder='Tell us more' />
+            </Form>
+          </div>
+
+          <div>
+            <Button> Submit </Button>
+          </div>
+
         </div>
       </div>
-
-      // <div>
-      //   <div id="logistics-container">
-      //     <div className="date" id="term-taken">
-      //       <h1>Select Term taken</h1>
-      //       <Button.Group vertical floated="left" size="medium">
-      //         <Button>Fall</Button>
-      //         <Button>Spring</Button>
-      //         <Button>Summer</Button>
-      //         <Button>Winter</Button>
-      //       </Button.Group>
-      //     </div>
-      //     <div className="date" id="year-taken">
-
-      //     </div>
-      //     <div className="date" id="proffesor">
-
-      //     </div>
-      //   </div>
-      //   <div>
-      //     <Rating icon="star" defaultRating={3} maxRating={5} />
-      //   </div>
-      // </div>
     );
   }
 }
