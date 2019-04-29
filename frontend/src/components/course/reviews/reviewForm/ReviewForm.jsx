@@ -1,167 +1,41 @@
 import React, { Component } from "react";
 import { Form, Button, Grid, Dropdown, TextArea } from "semantic-ui-react";
+
+import DifficultyRating from './DifficultyRating'
+import ClassRating from './ClassRating'
+import Hours from './Hours'
+import Term from './Term'
+
 import "./ReviewForm.scss";
-import Ratings from 'react-ratings-declarative';
+
 
 class ReviewForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      terms: [],
-      years: [],
-      professors: ["Wade", "Geoffrey", "Angrave"],
-      rating: 1,
-      difficulty: 1,
-      hours: '1-4'
-    };
-  }
-
-  getYears = startYear => {
-    let x = [];
-    for (let i = startYear; i <= 2019; i++) {
-      x.push({ key: i, text: parseInt(i), value: i - startYear });
-    }
-
-    return x;
-  };
-
-  getProfessors = () => {
-    let i = -1;
-    return this.state.professors.map(prof => {
-      i++;
-      return { key: i, text: prof, value: i };
-    });
-  };
-
-  changeRating = (nextValue) => {
-    this.setState({ rating: nextValue });
-  };
-
-  changeDifficulty = (nextValue) => {
-    this.setState({ difficulty: nextValue });
-  };
-
-  getColor = () => {
-    const rate = this.state.difficulty;
-    switch (rate) {
-      case 1:
-        return 'green';
-      case 2:
-        return 'yellowgreen';
-      case 3:
-        return 'gold';
-      case 4:
-        return 'orange';
-      default:
-        return 'red';
-    }
-  }
-
-  changeHours = (event, data) => {
-    this.setState({hours: data.children})
-  }
-
-
 
   render() {
-    const terms = [
-      { key: 1, text: "Fall", value: 1 },
-      { key: 2, text: "Spring", value: 2 },
-      { key: 3, text: "Summer", value: 3 },
-      { key: 4, text: "Winter", value: 4 }
-    ];
 
     return (
-      <div id="review-container">
+      <div id='wrapper'>
+        <div id="review-container">
+          
+          <Term professors={this.props.professors}/>
+          <Hours/>
+          <ClassRating/>
+          <DifficultyRating/>
 
-        <div className="strip" id="logistics">
-          <Grid textAlign="center" columns={3}>
-            <Grid.Column id="term">
-              <Dropdown
-                placeholder="Term"
-                clearable
-                options={terms}
-                selection
-              />
-            </Grid.Column>
-            <Grid.Column id="year">
-              <Dropdown
-                placeholder="Year"
-                clearable
-                options={this.getYears(2010)}
-                selection
-              />
-            </Grid.Column>
-            <Grid.Column id="professor">
-              <Dropdown
-                placeholder="Professor"
-                clearable
-                options={this.getProfessors()}
-                selection
-              />
-            </Grid.Column>
-            <Grid.Row />
-          </Grid>
-          <div class='rating'>
-            <div>
-              Hours spent per week:
-            </div>
-            <Button.Group size='large' toggle>
-              <Button onClick={this.changeHours} active={this.state.hours === '1-4'}>1-4</Button>
-              <Button onClick={this.changeHours} active={this.state.hours === '5-9'}>5-9</Button>
-              <Button onClick={this.changeHours} active={this.state.hours === '10-14'}>10-14</Button>
-              <Button onClick={this.changeHours} active={this.state.hours === '15-19'}>15-19</Button>
-              <Button onClick={this.changeHours} active={this.state.hours === '20+'}>20+</Button>
-            </Button.Group>
-          </div>
-          <div class='rating'>
-            <div>
-              Rating:
-            </div>
-            <Ratings
-              rating={this.state.rating}
-              widgetRatedColors={'gold'}
-              changeRating={this.changeRating}
-              widgetHoverColors={'gold'}
-            >
-              <Ratings.Widget/>
-              <Ratings.Widget/>
-              <Ratings.Widget/>
-              <Ratings.Widget/>
-              <Ratings.Widget />
-            </Ratings>
-          </div>
-          <div class='rating'>
-            <div>
-              Difficulty:
-            </div>
-            <Ratings
-              rating={this.state.difficulty}
-              widgetRatedColors={this.getColor()}
-              changeRating={this.changeDifficulty}
-              widgetHoverColors={this.getColor()}
-            >
-              <Ratings.Widget/>
-              <Ratings.Widget/>
-              <Ratings.Widget/>
-              <Ratings.Widget/>
-              <Ratings.Widget />
-            </Ratings>
-          </div>
-
-          <div>
+          <div class='strip'>
             <p>
-              Anything else?
+              Please tell us about the class:
             </p>
             <Form>
               <TextArea placeholder='Tell us more' />
             </Form>
           </div>
 
-          <div>
-            <Button> Submit </Button>
+          <div class='strip' id='submit'>
+            <div>
+            <Button size='large' >Submit Review</Button>
+            </div>
           </div>
-
         </div>
       </div>
     );
