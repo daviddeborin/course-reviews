@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button, Grid, Dropdown, TextArea } from "semantic-ui-react";
+import { Form, Button, Grid, TextArea } from "semantic-ui-react";
 
 import DifficultyRating from './DifficultyRating'
 import ClassRating from './ClassRating'
@@ -16,16 +16,49 @@ class ReviewForm extends Component {
     return (
       <div id='wrapper'>
         <div id="review-container">
-          
           <Term professors={this.props.professors}/>
-          <Hours/>
-          <ClassRating/>
-          <DifficultyRating/>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={6}>
+                <div class='question'>
+                  Hours spent per week:
+                </div>
+              </Grid.Column>
+              <Grid.Column width={10}>
+                <div class='centerMe'>
+                  <Hours/>
+                </div>
+              </Grid.Column>
+            </Grid.Row>
+
+            <Grid.Row>
+            < Grid.Column width={6}>
+              <div class='question'>
+                  Rating:
+                </div>
+              </Grid.Column>
+              <Grid.Column width={10}>
+              <div class='centerMe'>
+                  <ClassRating/>
+                </div>
+              </Grid.Column>
+            </Grid.Row>
+
+            <Grid.Row>
+              <Grid.Column width={6}>
+                <div class='question'>
+                  Difficulty:
+                </div>
+              </Grid.Column>
+              <Grid.Column width={10}>
+                <div class='centerMe'>
+                  <DifficultyRating/>
+                </div>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
 
           <div class='strip'>
-            <p>
-              Please tell us about the class:
-            </p>
             <Form>
               <TextArea placeholder='Tell us more' />
             </Form>
@@ -36,6 +69,8 @@ class ReviewForm extends Component {
             <Button size='large' >Submit Review</Button>
             </div>
           </div>
+
+        
         </div>
       </div>
     );

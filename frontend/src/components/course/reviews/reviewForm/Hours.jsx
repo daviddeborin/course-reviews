@@ -13,9 +13,6 @@ class Hours extends Component {
     render () {
         return (
             <div class='rating strip'>
-                <div>
-                    Hours spent per week:
-                </div>
                 <Button.Group size='large' toggle>
                     <Button onClick={this.changeHours} active={this.state.hours === '1-4'}>1-4</Button>
                     <Button onClick={this.changeHours} active={this.state.hours === '5-9'}>5-9</Button>

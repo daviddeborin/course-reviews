@@ -29,9 +29,6 @@ class DifficultyRating extends Component {
     render () {
         return (
             <div class='rating strip'>
-                <div>
-                    Difficulty:
-                </div>
                 <Ratings
                     rating={this.state.difficulty}
                     widgetRatedColors={this.getColor()}

@@ -24,6 +24,7 @@
 }
 
 #logistics {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -33,11 +34,9 @@
     }
 }
 .strip {
-    width: 100%;
-    p {
-        font-size: 1.5em;
-        margin-right: 20px;
-    }
+    
+    width: 80%;
+
 }
 
 .rating{
@@ -50,3 +49,13 @@
         margin-right: 20px;
     }
 }
+
+.question {
+    font-size: 1.5em;
+}
+
+// .centerMe {
+//     background-color: coral;
+//     display: flex;
+//     justify-content: center;
+// }

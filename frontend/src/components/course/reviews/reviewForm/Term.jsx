@@ -38,7 +38,7 @@ class Term extends Component {
         return (
             <div className="strip" id="logistics">
             <p>
-                When did you take the class?
+                Class logistics:
             </p>
             <Grid textAlign="center" columns={3}>
                 <Grid.Column id="term">

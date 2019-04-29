@@ -14,9 +14,6 @@ class ClassRating extends Component {
     render() {
         return (
             <div class='rating strip'>
-            <div>
-                Rating:
-            </div>
             <Ratings
                 rating={this.state.rating}
                 widgetRatedColors={'gold'}
