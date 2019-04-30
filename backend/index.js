@@ -74,41 +74,24 @@ var Review = sequelize.define("Review", {
   rating: Sequelize.INTEGER
 });
 
+const db = {};
+
+db.Sequelize = Sequelize;
+db.sequelize = sequelize;
+
+db.Course = Course;
+db.Comment = Comment;
+db.Review = Review;
+db.User = User;
+
 sequelize.sync({ force: true }).then(
   function(err) {
     console.log("sql has been synced");
+    require("./dbfill")(db);
   },
   function(err) {
     console.log("An error occurred while creating the table:", err);
   }
 );
 
-// var Course = sequelize.define('User', {
-//     username: Sequelize.STRING,
-//     password: Sequelize.STRING
-// });
-
-// const sequelize = new Sequelize({
-//     dialect: 'sqlite',
-//     storage: './database.sqlite'
-// })
-
-// sequelize.authenticate();
-
-// // Models
-// var Subject = sequelize.define('subject', {
-//     name : {
-//         type: Sequelize.STRING,
-//         allowNull : false
-//     },
-//     courses : Sequelize.ARRAY,
-// })
-
-// var Course = sequelize.define('course', {
-//     number : Sequelize.NUMBER,
-//     description : Sequelize.STRING
-// })
-
-// sequelize.sync({force: true});
-
-// module.exports = {Subject : Subject, Course : Course};
+module.exports = db;
