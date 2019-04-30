@@ -47,6 +47,12 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/subject", subjectRouter);
 
+app.use("/course", require("./routes/course")(db));
+app.use("/login", require("./routes/login")(db));
+app.use("/signup", require("./routes/signup")(db));
+app.use("/comment", require("./routes/comment")(db));
+app.use("/review", require("./routes/review")(db));
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
