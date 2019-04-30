@@ -4,17 +4,19 @@ module.exports = db => {
 
   // get all courses for search bar
   router.get("/", function(req, res, next) {
-    res.json({ message: "course", name: "hi" });
-    Subject.create({ name: "CS", courses: [] }).then(cs => {
-      console.log("CS auto gen id", cs.id);
+    db.Course.findAll({}).then(courses => {
+      res.json(courses);
     });
   });
 
-  // get specific course
   router.get("/:id", function(req, res, next) {
-    res.json({ message: "course", name: "hi" });
-    Subject.create({ name: "CS", courses: [] }).then(cs => {
-      console.log("CS auto gen id", cs.id);
+    const id = req.params.id;
+    db.Course.findByPk(id).then(course => {
+      if (course != null) {
+        res.json(course);
+      } else {
+        res.status(404).json({ err: "not found" });
+      }
     });
   });
 
