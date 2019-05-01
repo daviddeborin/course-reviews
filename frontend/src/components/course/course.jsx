@@ -6,6 +6,7 @@ import ReviewContainer from "./reviews/review/container/ReviewContainer";
 import Ratings from "react-ratings-declarative";
 import axios from "axios";
 import "./course.scss";
+import CourseSearchBar from "../common/courseSearchBar/CourseSearchBar";
 
 class Course extends Component {
   state = {
@@ -93,7 +94,7 @@ class Course extends Component {
           </Menu.Item>
 
           <Menu.Item position="right">
-            <Input placeholder="Search" />
+            <CourseSearchBar />
           </Menu.Item>
         </Menu>
 
