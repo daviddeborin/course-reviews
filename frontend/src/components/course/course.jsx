@@ -25,8 +25,21 @@ class Course extends Component {
     });
   }
 
+  getHour = () => {
+    var counts = [
+      this.state.courseInfo.hours_1_4,
+      this.state.courseInfo.hours_5_9,
+      this.state.courseInfo.hours_10_14,
+      this.state.courseInfo.hours_15_19,
+      this.state.courseInfo.hours_20
+    ];
+    var labels = ["1-4", "5-9", "10-14", "15-19", "20+"];
+    let i = counts.indexOf(Math.max(...counts));
+    return labels[i];
+  };
+
   getHourColor = () => {
-    const hours = this.state.avgHours;
+    const hours = this.getHour();
     switch (hours) {
       case "1-4":
         return "green";
@@ -42,9 +55,9 @@ class Course extends Component {
   };
 
   getDifficultyColors = (border, rating = false) => {
-    let diff = this.state.avgDifficulty;
+    let diff = this.state.courseInfo.difficulty;
     if (rating) {
-      diff = this.state.avgRating;
+      diff = this.state.courseInfo.rating;
     }
     if (diff < 1.5) {
       return "green";
@@ -103,7 +116,7 @@ class Course extends Component {
           <Segment className="metric" textAlign="center">
             Average Hours Per Week
             <Segment className="centerMetric" color={this.getHourColor()}>
-              {this.state.avgHours}
+              {this.getHour()}
             </Segment>
           </Segment>
 
@@ -111,7 +124,7 @@ class Course extends Component {
             Average Rating
             <Segment className="centerMetric" color="yellow">
               <Ratings
-                rating={this.state.avgRating}
+                rating={this.state.courseInfo.rating}
                 widgetRatedColors={"gold"}
                 widgetDimensions="1.5em"
               >
@@ -131,7 +144,7 @@ class Course extends Component {
               color={this.getDifficultyColors(true)}
             >
               <Ratings
-                rating={this.state.avgDifficulty}
+                rating={this.state.courseInfo.difficulty}
                 widgetRatedColors={this.getDifficultyColors(false)}
                 widgetDimensions="1.5em"
               >
