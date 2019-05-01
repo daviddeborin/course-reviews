@@ -53,6 +53,7 @@ var Comment = sequelize.define("Comment", {
 
 var Review = sequelize.define("Review", {
   review: Sequelize.TEXT,
+  semester_taken: Sequelize.TEXT,
   course: {
     type: Sequelize.INTEGER,
     references: {
