@@ -61,7 +61,6 @@ var Review = sequelize.define("Review", {
     }
   },
   professor: Sequelize.TEXT,
-  date_posted: Sequelize.DATE,
   user: {
     type: Sequelize.INTEGER,
     references: {
