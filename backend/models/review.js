@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     professor: Sequelize.TEXT,
-    date_posted: Sequelize.DATE,
     user: {
       type: Sequelize.INTEGER,
       references: {
@@ -22,3 +21,5 @@ module.exports = (sequelize, DataTypes) => {
     rating: Sequelize.INTEGER
   });
 };
+
+/// check index.js for actual models being used

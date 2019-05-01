@@ -4,3 +4,5 @@ module.exports = (sequelize, DataTypes) => {
     password: Sequelize.STRING
   });
 };
+
+/// check index.js for actual models being used

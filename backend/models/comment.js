@@ -17,3 +17,5 @@ module.exports = (sequelize, DataTypes) => {
     comment: Sequelize.TEXT
   });
 };
+
+/// check index.js for actual models being used

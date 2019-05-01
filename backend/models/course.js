@@ -13,3 +13,5 @@ module.exports = (sequelize, DataTypes) => {
     hours_20: Sequelize.INTEGER
   });
 };
+
+/// check index.js for actual models being used
