@@ -1,38 +1,50 @@
 import _ from "lodash";
-import faker from "faker";
+//import faker from "faker";
 import React, { Component } from "react";
 import { Search, Grid } from "semantic-ui-react";
+import axios from "axios";
 
-const defaultMessage = 'Search for course'
+const defaultMessage = "Search for course";
 
-const source = _.times(5, () => ({
-  title: faker.company.companyName(),
-  description: faker.company.catchPhrase(),
-  image: faker.internet.avatar(),
-  price: faker.finance.amount(0, 100, 2, "$")
-}));
+// const source = _.times(5, () => ({
+//   title: faker.company.companyName(),
+//   description: faker.company.catchPhrase(),
+//   image: faker.internet.avatar(),
+//   price: faker.finance.amount(0, 100, 2, "$")
+// }));
 
 class CourseSearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading : false,
+      isLoading: false,
       value: defaultMessage,
       results: [],
-    }
+      origData: []
+    };
+  }
+
+  componentWillMount() {
+    axios.get("http://localhost:9000/course").then(res => {
+      console.log(res.data);
+      this.setState({ origData: res.data });
+    });
   }
 
   resetDefault = () => {
     if (this.state.value === defaultMessage) {
-      this.setState({value: ""});
+      this.setState({ value: "" });
     }
-  }
+  };
 
   resetComponent = () =>
     this.setState({ isLoading: false, results: [], value: "" });
 
-  handleResultSelect = (e, { result }) =>
+  handleResultSelect = (e, { result }) => {
+    window.location.href = "/courses/" + result.id;
+    console.log("/" + result.id);
     this.setState({ value: result.title });
+  };
 
   handleSearchChange = (e, { value }) => {
     this.setState({ isLoading: true, value });
@@ -45,7 +57,7 @@ class CourseSearchBar extends Component {
 
       this.setState({
         isLoading: false,
-        results: _.filter(source, isMatch) // uses the isMatch
+        results: _.filter(this.state.origData, isMatch) // uses the isMatch
       });
     }, 300);
   };
@@ -57,7 +69,7 @@ class CourseSearchBar extends Component {
       <Grid>
         <Grid.Column width={6}>
           <Search
-            size='huge'
+            size="huge"
             defaultValue="Search for course"
             loading={isLoading}
             onResultSelect={this.handleResultSelect}
@@ -73,7 +85,6 @@ class CourseSearchBar extends Component {
       </Grid>
     );
   }
-
 }
 
 export default CourseSearchBar;
