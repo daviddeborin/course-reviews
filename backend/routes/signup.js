@@ -4,9 +4,9 @@ module.exports = db => {
 
   // add new user
   router.post("/", function(req, res, next) {
-    res.json({ message: "signup", name: "hi" });
-    Subject.create({ name: "CS", courses: [] }).then(cs => {
-      console.log("CS auto gen id", cs.id);
+    console.log(req.body);
+    db.User.create(req.body).then(err => {
+      res.json(err);
     });
   });
 
