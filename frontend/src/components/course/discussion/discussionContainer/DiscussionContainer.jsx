@@ -2,57 +2,21 @@ import React, { Component } from "react";
 import { List, Button, Modal } from "semantic-ui-react";
 import DiscussionForm from "../discussionForm/DiscussionForm";
 import "./DiscussionContainer.scss";
+import axios from "axios";
 
 class DiscussionContainer extends Component {
   state = {
-    DiscussionPosts: [
-      {
-        user: "Ligma",
-        post:
-          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
-      },
-      {
-        user: "Ligma",
-        post:
-          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
-      },
-      {
-        user: "Ligma",
-        post:
-          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
-      },
-      {
-        user: "Ligma",
-        post:
-          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
-      },
-      {
-        user: "Ligma",
-        post:
-          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
-      },
-      {
-        user: "Ligma",
-        post:
-          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
-      },
-      {
-        user: "Ligma",
-        post:
-          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
-      },
-      {
-        user: "Ligma",
-        post:
-          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
-      },
-      {
-        user: "Ligma",
-        post:
-          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
-      }
-    ]
+    DiscussionPosts: []
   };
+
+  componentWillMount() {
+    var url = "http://localhost:9000/comment/" + this.props.courseID;
+
+    axios.get(url).then(res => {
+      console.log(res.data);
+      this.setState({ DiscussionPosts: res.data });
+    });
+  }
   render() {
     return (
       <div>
@@ -72,8 +36,8 @@ class DiscussionContainer extends Component {
               <List.Item key={i}>
                 <List.Icon name="comment" size="small" verticalAlign="top" />
                 <List.Content>
-                  <List.Header>{p.user}</List.Header>
-                  <List.Description>{p.post}</List.Description>
+                  <List.Header>Date: {p.createdAt}</List.Header>
+                  <List.Description>{p.comment}</List.Description>
                 </List.Content>
               </List.Item>
             ))}

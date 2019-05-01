@@ -3,18 +3,22 @@ import { List, Button, Modal } from "semantic-ui-react";
 import Review from "../Review";
 import ReviewForm from "../../reviewForm/ReviewForm";
 import "./ReviewContainer.scss";
+import axios from "axios";
 
 class ReviewContainer extends Component {
   state = {
-    Reviews: [
-      {
-        rating: 5
-      },
-      {
-        rating: 2
-      }
-    ]
+    Reviews: []
   };
+
+  componentWillMount() {
+    var url = "http://localhost:9000/review/" + this.props.courseID;
+
+    axios.get(url).then(res => {
+      console.log(res.data);
+      this.setState({ Reviews: res.data });
+    });
+  }
+
   render() {
     return (
       <div>
@@ -23,7 +27,7 @@ class ReviewContainer extends Component {
           <Modal.Header>New Review</Modal.Header>
 
           <Modal.Content>
-            <ReviewForm />
+            <ReviewForm courseID={this.props.courseID} />
           </Modal.Content>
         </Modal>
 
@@ -33,7 +37,7 @@ class ReviewContainer extends Component {
             {this.state.Reviews.map((p, i) => (
               <List.Item key={i}>
                 <List.Content>
-                  <Review />
+                  <Review data={p} />
                 </List.Content>
               </List.Item>
             ))}
