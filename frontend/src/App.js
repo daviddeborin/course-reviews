@@ -18,7 +18,7 @@ class App extends Component {
           <div id="app-body-container">
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <Route path="/courses/:id" component={Course} />
+              <Route path="/courses/:subject/:course" component={Course} />
               <Route path="/login/" component={Login} />
               <Route path="/register/" component={Register} />
             </Switch>
