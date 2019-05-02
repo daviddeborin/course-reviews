@@ -11,7 +11,7 @@ class ReviewContainer extends Component {
   };
 
   componentWillMount() {
-    var url = "http://localhost:9000/review/" + this.props.courseID;
+    var url = "http://localhost:9000/courses/" + this.props.subject + this.props.courseNumber;
 
     axios.get(url).then(res => {
       console.log(res.data);
@@ -27,7 +27,7 @@ class ReviewContainer extends Component {
           <Modal.Header>New Review</Modal.Header>
 
           <Modal.Content>
-            <ReviewForm courseID={this.props.courseID} />
+            <ReviewForm courseNumber={this.props.courseNumber} subject={this.props.subject} />
           </Modal.Content>
         </Modal>
 

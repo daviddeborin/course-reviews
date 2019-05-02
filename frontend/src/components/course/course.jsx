@@ -17,6 +17,7 @@ class Course extends Component {
   };
 
   componentWillMount() {
+
     var url = "http://localhost:9000/course/" + this.props.match.params.id;
 
     axios.get(url).then(res => {
@@ -83,7 +84,10 @@ class Course extends Component {
         menuItem: "Reviews",
         render: () => (
           <Tab.Pane>
-            <ReviewContainer courseID={this.props.match.params.id} />
+            <ReviewContainer 
+            courseNumber={this.props.match.params.courseNumber} 
+            subject={this.props.match.params.subject} 
+            />
           </Tab.Pane>
         )
       },
@@ -91,7 +95,10 @@ class Course extends Component {
         menuItem: "Discussion",
         render: () => (
           <Tab.Pane>
-            <DiscussionContainer courseID={this.props.match.params.id} />
+            <DiscussionContainer 
+            courseNumber={this.props.match.params.courseNumber} 
+            subject={this.props.match.params.subject} 
+            />
           </Tab.Pane>
         )
       }
@@ -113,12 +120,6 @@ class Course extends Component {
 
         {/*  Metrics Dashboard   */}
         <Segment.Group horizontal>
-          <Segment className="metric" textAlign="center">
-            Average Hours Per Week
-            <Segment className="centerMetric" color={this.getHourColor()}>
-              {this.getHour()}
-            </Segment>
-          </Segment>
 
           <Segment className="metric" textAlign="center">
             Average Rating
@@ -154,6 +155,13 @@ class Course extends Component {
                 <Ratings.Widget />
                 <Ratings.Widget />
               </Ratings>
+            </Segment>
+          </Segment>
+
+          <Segment className="metric" textAlign="center">
+            Average Hours Per Week
+            <Segment className="centerMetric" color={this.getHourColor()}>
+              {this.getHour()}
             </Segment>
           </Segment>
         </Segment.Group>
