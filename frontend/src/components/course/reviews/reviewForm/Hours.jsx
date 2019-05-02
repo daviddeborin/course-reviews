@@ -8,6 +8,7 @@ class Hours extends Component {
 
     changeHours = (event, data) => {
         this.setState({hours: data.children})
+        this.props.sendParent(data.children);
     }
 
     render () {

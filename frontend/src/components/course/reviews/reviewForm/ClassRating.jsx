@@ -9,6 +9,7 @@ class ClassRating extends Component {
 
     changeRating = (nextValue) => {
         this.setState({ rating: nextValue });
+        this.props.sendParent(nextValue);
     };
 
     render() {

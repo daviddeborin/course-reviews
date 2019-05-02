@@ -5,16 +5,32 @@ class Term extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          terms: [],
-          years: [],
+          term: '',
+          year: '',
+          professor: '',
           professors: ["Wade", "Geoffrey", "Angrave"],
         };
+    }
+
+    updateYear = (event, data) => {
+        this.setState({year : data.value});
+        this.props.sendYear(data.value);
+    }
+
+    updateTerm = (event, data) => {
+        this.setState({term : data.value});
+        this.props.sendTerm(data.value);
+    }
+
+    updateProfessor = (event, data) => {
+        this.setState({term : data.value});
+        this.props.sendProfessor(data.value); // props is passed in by the parent class
     }
 
     getYears = startYear => {
         let x = [];
         for (let i = startYear; i <= 2019; i++) {
-            x.push({ key: i, text: parseInt(i), value: i - startYear });
+            x.push({ key: i, text: parseInt(i), value: i });
         }
         return x;
     };
@@ -23,17 +39,17 @@ class Term extends Component {
         let i = -1;
         return this.state.professors.map(prof => {
             i++;
-            return { key: i, text: prof, value: i };
+            return { key: i, text: prof, value: prof };
         });
     };
 
 
     render() {
         const terms = [
-            { key: 1, text: "Fall", value: 1 },
-            { key: 2, text: "Spring", value: 2 },
-            { key: 3, text: "Summer", value: 3 },
-            { key: 4, text: "Winter", value: 4 }
+            { key: 1, text: "Fall", value: "Fall" },
+            { key: 2, text: "Spring", value: "Spring" },
+            { key: 3, text: "Summer", value: "Summer" },
+            { key: 4, text: "Winter", value: "Winter" }
           ];
         return (
             <div className="strip" id="logistics">
@@ -47,6 +63,7 @@ class Term extends Component {
                     clearable
                     options={terms}
                     selection
+                    onChange={this.updateTerm}
                 />
                 </Grid.Column>
                 <Grid.Column id="year">
@@ -55,6 +72,7 @@ class Term extends Component {
                     clearable
                     options={this.getYears(2010)}
                     selection
+                    onChange={this.updateYear}
                 />
                 </Grid.Column>
                 <Grid.Column id="professor">
@@ -63,6 +81,7 @@ class Term extends Component {
                     clearable
                     options={this.getProfessors()}
                     selection
+                    onChange={this.updateProfessor}
                 />
                 </Grid.Column>
                 <Grid.Row />
@@ -72,4 +91,4 @@ class Term extends Component {
     }
 }
 
-export default Term
+export default Term;

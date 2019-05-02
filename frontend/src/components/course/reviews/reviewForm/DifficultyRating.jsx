@@ -8,6 +8,7 @@ class DifficultyRating extends Component {
 
     changeDifficulty = (nextValue) => {
         this.setState({ difficulty: nextValue });
+        this.props.sendParent(nextValue);
     };
 
     getColor = () => {
