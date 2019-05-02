@@ -7,10 +7,6 @@ var bodyParser = require("body-parser");
 
 var db = require("./index");
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-var subjectRouter = require("./routes/subject");
-
 var app = express();
 
 // view engine setup
@@ -43,10 +39,7 @@ app.use(
 );
 app.use(bodyParser.json());
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
-app.use("/subject", subjectRouter);
-
+// Calling the different routes and passing the db
 app.use("/course", require("./routes/course")(db));
 app.use("/login", require("./routes/login")(db));
 app.use("/signup", require("./routes/signup")(db));
