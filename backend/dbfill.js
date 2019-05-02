@@ -1,7 +1,7 @@
 module.exports = db => {
   db.User.create({
-    username: "admin",
-    password: "admin"
+    username: "David Deborin",
+    password: "mayo1234"
   });
 
   db.Course.create({
@@ -10,9 +10,9 @@ module.exports = db => {
     title: "The Art of Web Programming",
     rating: 5,
     difficulty: 3,
-    number_of_reviews: 0,
+    number_of_reviews: 1,
     hours_1_4: 0,
-    hours_5_9: 0,
+    hours_5_9: 1,
     hours_10_14: 0,
     hours_15_19: 0,
     hours_20: 0
@@ -24,9 +24,9 @@ module.exports = db => {
     title: "Applied Machine Learning",
     rating: 5,
     difficulty: 3,
-    number_of_reviews: 0,
+    number_of_reviews: 1,
     hours_1_4: 0,
-    hours_5_9: 0,
+    hours_5_9: 1,
     hours_10_14: 0,
     hours_15_19: 0,
     hours_20: 0
@@ -49,7 +49,7 @@ module.exports = db => {
     course: 1,
     professor: "prof smith",
     user: 1,
-    hours: "0-4",
+    hours: "1-4",
     difficulty: 3,
     rating: 5
   });
@@ -59,7 +59,7 @@ module.exports = db => {
     course: 2,
     professor: "prof smith",
     user: 1,
-    hours: "0-4",
+    hours: "1-4",
     difficulty: 3,
     rating: 5
   });

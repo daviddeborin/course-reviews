@@ -1,5 +1,6 @@
 var Sequelize = require("sequelize");
 
+// Establish the db connection
 const sequelize = new Sequelize({
   dialect: "sqlite",
   storage: "./course_review.db"
@@ -9,7 +10,7 @@ sequelize.authenticate().then(
   function(err) {
     console.log("Connection to db has been established successfully.");
   },
-  function(err) {
+  function(err) { // this parameter is the .catch()
     console.log("Unable to connect to the database:", err);
   }
 );
@@ -76,8 +77,8 @@ var Review = sequelize.define("Review", {
 
 const db = {};
 
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
+db.Sequelize = Sequelize; // Library as a whole
+db.sequelize = sequelize; // actual connection setup
 
 db.Course = Course;
 db.Comment = Comment;
@@ -87,6 +88,7 @@ db.User = User;
 sequelize.sync({ force: true }).then(
   function(err) {
     console.log("sql has been synced");
+    // 
     require("./dbfill")(db);
   },
   function(err) {
