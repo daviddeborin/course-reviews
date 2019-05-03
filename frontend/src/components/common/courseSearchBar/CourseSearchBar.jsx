@@ -41,7 +41,7 @@ class CourseSearchBar extends Component {
     this.setState({ isLoading: false, results: [], value: "" });
 
   handleResultSelect = (e, { result }) => {
-    window.location.href = "/courses/" + result.id;
+    window.location.href = "/courses/" + result.subject + '/' + result.number;
     console.log("/" + result.id);
     this.setState({ value: result.title });
   };
@@ -53,11 +53,16 @@ class CourseSearchBar extends Component {
       if (this.state.value.length < 1) return this.resetComponent();
 
       const re = new RegExp(_.escapeRegExp(this.state.value), "i");
-      const isMatch = result => re.test(result.title); // we would put our conditionals/ filters here
+      const isMatch = result => re.test(result.title) || re.test(result.number.subtring(0,3)) || re.test(result.subject); // we would put our conditionals/ filters here
 
+      console.log('orig data', this.state.origData)
+      let res = _.filter(this.state.origData, isMatch);
+      let resobj = res.map(item => {
+        return {title : item.subject + item.number.substring(0,3), description: item.title};
+      });
       this.setState({
         isLoading: false,
-        results: _.filter(this.state.origData, isMatch) // uses the isMatch
+        results: resobj, // uses the isMatch
       });
     }, 300);
   };
