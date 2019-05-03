@@ -9,13 +9,18 @@ module.exports = db => {
     });
   });
 
-  router.get("/:id", function(req, res, next) {
-    const id = req.params.id;
-    db.Course.findByPk(id).then(course => {
+  router.get("/:subject/:courseNumber", function(req, res, next) {
+    const query = {
+      subject : req.params.subject,
+      number : req.params.courseNumber
+    }
+    console.log(query, "query");
+    db.Course.findOne({where : query}).then(course => {
+      console.log(course, 'course found');
       if (course != null) {
         res.json(course);
       } else {
-        res.status(404).json({ err: "not found" });
+        res.status(404).json({ err: "Course not found" });
       }
     });
   });

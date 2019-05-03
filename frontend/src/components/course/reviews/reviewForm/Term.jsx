@@ -91,4 +91,4 @@ class Term extends Component {
     }
 }
 
-export default Term;
+export default Term

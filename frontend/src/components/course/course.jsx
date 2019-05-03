@@ -13,17 +13,28 @@ class Course extends Component {
     avgHours: "1-4",
     avgDifficulty: 4.6,
     avgRating: 1,
-    courseInfo: {}
+    courseInfo: {},
+    display: true
   };
 
   componentWillMount() {
+    console.log(this.props.match.params, "course jsx");
+    var url =
+      "http://localhost:9000/course/" +
+      this.props.match.params.subject +
+      "/" +
+      this.props.match.params.courseNumber;
 
-    var url = "http://localhost:9000/course/" + this.props.match.params.id;
-
-    axios.get(url).then(res => {
-      console.log(res.data);
-      this.setState({ courseInfo: res.data });
-    });
+    axios
+      .get(url)
+      .then(res => {
+        console.log(res.data, "data");
+        this.setState({ courseInfo: res.data, display: true });
+      })
+      .catch(err => {
+        console.log(err, "error");
+        this.setState({ display: false });
+      });
   }
 
   getHour = () => {
@@ -79,97 +90,106 @@ class Course extends Component {
   };
 
   render() {
-    const panes = [
-      {
-        menuItem: "Reviews",
-        render: () => (
-          <Tab.Pane>
-            <ReviewContainer 
-            courseNumber={this.props.match.params.courseNumber} 
-            subject={this.props.match.params.subject} 
-            />
-          </Tab.Pane>
-        )
-      },
-      {
-        menuItem: "Discussion",
-        render: () => (
-          <Tab.Pane>
-            <DiscussionContainer 
-            courseNumber={this.props.match.params.courseNumber} 
-            subject={this.props.match.params.subject} 
-            />
-          </Tab.Pane>
-        )
+    if (this.state.display) {
+      const panes = [
+        {
+          menuItem: "Reviews",
+          render: () => (
+            <Tab.Pane>
+              <ReviewContainer
+                courseNumber={this.props.match.params.courseNumber}
+                subject={this.props.match.params.subject}
+              />
+            </Tab.Pane>
+          )
+        },
+        {
+          menuItem: "Discussion",
+          render: () => (
+            <Tab.Pane>
+              <DiscussionContainer
+                courseNumber={this.props.match.params.courseNumber}
+                subject={this.props.match.params.subject}
+              />
+            </Tab.Pane>
+          )
+        }
+      ];
+
+      let courseInfo = this.state.courseInfo;
+      let number = courseInfo.number;
+      if (number !== undefined) {
+        number = number.substring(0, 3);
       }
-    ];
+      
+      return (
+        <div>
+          {/*  Course Title  */}
+          {/* <h1>CS 498 Applied Machine Learning</h1> */}
+          <Menu borderless>
+            <Menu.Item position="left">
+              <h1>{courseInfo.subject + number + " " + courseInfo.title}</h1>
+            </Menu.Item>
 
-    return (
-      <div>
-        {/*  Course Title  */}
-        {/* <h1>CS 498 Applied Machine Learning</h1> */}
-        <Menu borderless>
-          <Menu.Item position="left">
-            <h1>{this.state.courseInfo.title}</h1>
-          </Menu.Item>
+            <Menu.Item position="right">
+              <CourseSearchBar />
+            </Menu.Item>
+          </Menu>
 
-          <Menu.Item position="right">
-            <CourseSearchBar />
-          </Menu.Item>
-        </Menu>
+          {/*  Metrics Dashboard   */}
+          <Segment.Group horizontal>
+            <Segment className="metric" textAlign="center">
+              Average Rating
+              <Segment className="centerMetric" color="yellow">
+                <Ratings
+                  rating={this.state.courseInfo.rating}
+                  widgetRatedColors={"gold"}
+                  widgetDimensions="1.5em"
+                >
+                  <Ratings.Widget />
+                  <Ratings.Widget />
+                  <Ratings.Widget />
+                  <Ratings.Widget />
+                  <Ratings.Widget />
+                </Ratings>
+              </Segment>
+            </Segment>
 
-        {/*  Metrics Dashboard   */}
-        <Segment.Group horizontal>
-
-          <Segment className="metric" textAlign="center">
-            Average Rating
-            <Segment className="centerMetric" color="yellow">
-              <Ratings
-                rating={this.state.courseInfo.rating}
-                widgetRatedColors={"gold"}
-                widgetDimensions="1.5em"
+            <Segment className="metric" textAlign="center">
+              Average Difficulty
+              <Segment
+                className="centerMetric"
+                color={this.getDifficultyColors(true)}
               >
-                <Ratings.Widget />
-                <Ratings.Widget />
-                <Ratings.Widget />
-                <Ratings.Widget />
-                <Ratings.Widget />
-              </Ratings>
+                <Ratings
+                  rating={this.state.courseInfo.difficulty}
+                  widgetRatedColors={this.getDifficultyColors(false)}
+                  widgetDimensions="1.5em"
+                >
+                  <Ratings.Widget />
+                  <Ratings.Widget />
+                  <Ratings.Widget />
+                  <Ratings.Widget />
+                  <Ratings.Widget />
+                </Ratings>
+              </Segment>
             </Segment>
-          </Segment>
 
-          <Segment className="metric" textAlign="center">
-            Average Difficulty
-            <Segment
-              className="centerMetric"
-              color={this.getDifficultyColors(true)}
-            >
-              <Ratings
-                rating={this.state.courseInfo.difficulty}
-                widgetRatedColors={this.getDifficultyColors(false)}
-                widgetDimensions="1.5em"
-              >
-                <Ratings.Widget />
-                <Ratings.Widget />
-                <Ratings.Widget />
-                <Ratings.Widget />
-                <Ratings.Widget />
-              </Ratings>
+            <Segment className="metric" textAlign="center">
+              Average Hours Per Week
+              <Segment className="centerMetric" color={this.getHourColor()}>
+                {this.getHour()}
+              </Segment>
             </Segment>
-          </Segment>
+          </Segment.Group>
 
-          <Segment className="metric" textAlign="center">
-            Average Hours Per Week
-            <Segment className="centerMetric" color={this.getHourColor()}>
-              {this.getHour()}
-            </Segment>
-          </Segment>
-        </Segment.Group>
-
-        {/* Discussion/Review Tabs  */}
-        <Tab panes={panes} />
-      </div>
-    );
+          {/* Discussion/Review Tabs  */}
+          <Tab panes={panes} />
+        </div>
+      );
+    } else {
+      return "Course Not Found";
+    }
   }
 }
 

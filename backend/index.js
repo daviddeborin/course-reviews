@@ -38,8 +38,8 @@ var Comment = sequelize.define("Comment", {
   course: {
     type: Sequelize.INTEGER,
     references: {
-      model: Course,
-      key: "id"
+      model: Course, // reference to Course Model
+      key: "id" // the column name in the Course Model
     }
   },
   user: {
