@@ -2,15 +2,8 @@ module.exports = (db, passport, LocalStrategy, session) => {
   var express = require("express");
   var router = express.Router();
 
-  // login auth
-  router.get('/', function(req, res, next) {
-    res.json('hi');
-  })
-  
 
   router.post('/', function(req, res, next) {
-    console.log(req.user, '\n USER post \n');
-
     passport.authenticate('local', function(err, user, info) {
       if (err) { res.status(404).send(err) }
       if (!user) { res.status(404).send({message : 'no user'}); }

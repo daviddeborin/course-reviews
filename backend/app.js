@@ -6,6 +6,9 @@ var logger = require("morgan");
 var bodyParser = require("body-parser");
 var db = require("./index");
 var app = express();
+var passport = require("passport");
+var LocalStrategy = require("passport-local").Strategy;
+var session = require("express-session")
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -15,9 +18,20 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
-app.use(cookieParser());
-
-
+app.use(cookieParser("mayo"));
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+app.use(bodyParser.json());
+app.use(session({ 
+  secret: "mayo",
+  resave: true,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 // Allow CORS so that backend and frontend could be put on different servers
 var allowCrossDomain = function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -31,21 +45,9 @@ var allowCrossDomain = function(req, res, next) {
 app.use(allowCrossDomain);
 
 // Use the body-parser package in our application
-app.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
-);
-app.use(bodyParser.json());
 
-// Passport
-var passport = require("passport");
-var LocalStrategy = require("passport-local").Strategy;
-var session = require("express-session");
 
-app.use(session({ secret: "mayo" }));
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 // Calling the different routes and passing the db
 app.use("/course", require("./routes/course")(db));

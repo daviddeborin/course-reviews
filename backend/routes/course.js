@@ -4,7 +4,6 @@ module.exports = db => {
 
   // get all courses for search bar
   router.get("/", function(req, res, next) {
-    console.log(req.user, '\n USER \n');
     db.Course.findAll({}).then(courses => {
       res.json(courses);
     });
