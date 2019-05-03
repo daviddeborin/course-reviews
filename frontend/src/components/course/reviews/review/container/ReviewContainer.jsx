@@ -8,7 +8,6 @@ import axios from "axios";
 class ReviewContainer extends Component {
 
   showReviews = () => {
-    console.log('reviews', this.props.reviews);
     if (this.props.reviews.length) {
       return (
         <div>

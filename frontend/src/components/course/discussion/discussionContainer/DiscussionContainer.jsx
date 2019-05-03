@@ -5,16 +5,24 @@ import "./DiscussionContainer.scss";
 import axios from "axios";
 
 class DiscussionContainer extends Component {
-  state = {
-    DiscussionPosts: []
-  };
-
-  componentWillMount() {
-    var url = "http://localhost:9000/comment/" + this.props.courseID;
-
-    axios.get(url).then(res => {
-      this.setState({ DiscussionPosts: res.data });
-    });
+  showDiscussion = () => {
+    if (this.props.discussionPosts.length) {
+      return (
+        <div>
+          <List divided relaxed>
+            {this.props.discussionPosts.map((p, i) => (
+              <List.Item key={i}>
+                <List.Icon name="comment" size="small" verticalAlign="top" />
+                <List.Content>
+                  <List.Header>Date: {p.createdAt}</List.Header>
+                  <List.Description>{p.comment}</List.Description>
+                </List.Content>
+              </List.Item>
+            ))}
+          </List>
+        </div>
+      )
+    }
   }
   render() {
     return (
@@ -29,19 +37,7 @@ class DiscussionContainer extends Component {
           </Modal>
         </div>
         {/* this is the list of comments  */}
-        <div>
-          <List divided relaxed>
-            {this.state.DiscussionPosts.map((p, i) => (
-              <List.Item key={i}>
-                <List.Icon name="comment" size="small" verticalAlign="top" />
-                <List.Content>
-                  <List.Header>Date: {p.createdAt}</List.Header>
-                  <List.Description>{p.comment}</List.Description>
-                </List.Content>
-              </List.Item>
-            ))}
-          </List>
-        </div>
+        {this.showDiscussion()}
       </div>
     );
   }

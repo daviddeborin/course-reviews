@@ -15,7 +15,8 @@ class Course extends Component {
     avgRating: 1,
     courseInfo: {},
     display: true,
-    reviews: {}
+    reviews: [],
+    discussionPosts: {}
   };
 
   componentDidMount() {
@@ -29,9 +30,15 @@ class Course extends Component {
       .get(url)
       .then(res => {
         this.setState({ courseInfo: res.data, display: true });
+
+
         axios.get('http://localhost:9000/review/' + res.data.id).then((res2) => {
           this.setState({reviews: res2.data});
-          console.log(res2.data);
+        }).catch();
+
+
+        axios.get("http://localhost:9000/comment/" + res.data.id).then(res2 => {
+          this.setState({ discussionPosts: res2.data });
         }).catch();
       })
       .catch(err => {
@@ -116,6 +123,7 @@ class Course extends Component {
                 courseNumber={this.props.match.params.courseNumber}
                 subject={this.props.match.params.subject}
                 courseId={this.state.courseInfo.id}
+                discussionPosts={this.state.discussionPosts}
               />
             </Tab.Pane>
           )
