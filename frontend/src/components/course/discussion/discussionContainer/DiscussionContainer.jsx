@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { List } from "semantic-ui-react";
 import "./DiscussionContainer.scss";
-import axios from "axios";
 
 class DiscussionContainer extends Component {
   showDiscussion = () => {
@@ -26,7 +25,6 @@ class DiscussionContainer extends Component {
   render() {
     return (
       <div>
-        
         {/* this is the list of comments  */}
         {this.showDiscussion()}
       </div>

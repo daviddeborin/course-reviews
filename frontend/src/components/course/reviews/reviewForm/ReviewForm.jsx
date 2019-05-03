@@ -95,9 +95,14 @@ class ReviewForm extends Component {
       /** var url = "http://localhost:9000/review/"
       axios.post(url, {
         subject : this.props.subject,
-        courseNumber : this.props.courseNumber,
+        number : this.props.courseNumber,
         formData : this.state,
-      }).then(); */
+      }).then(function(res) => {
+        notify.show("Review sent, please close form", 'success, -1, 'green')
+      }).catch(function(err) => {
+        notify.show("Review was not sent, please try again", 'error', 5000, 'red');
+        this.setState({disabled : false});
+      }); */
 
     } else {
       notify.show(canSubmit, "error", 5000, 'red');
