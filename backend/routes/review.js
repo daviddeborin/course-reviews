@@ -42,42 +42,7 @@ module.exports = db => {
         res.status(200).send("OK");
       })
       .catch(err => res.send(err));
-
-    // db.Review.create(req.body);
-    // res.send(req.body);
   });
-
-  // db.pets.findOne({
-  //   name: 'Max'
-  // })
-  // .then(pet => {
-  //   pet.updateAttributes({
-  //     name: 'Maxy-boi-boi'
-  //   });
-  // });
-
-  // const newData = {
-  //   name: 'Maxy-boi-boi'
-  // };
-
-  // db.pets.update(newData, {where: { name: 'Max' } })
-  // .then(updatedMax => {
-  //   console.log(updatedMax)
-  // })
-
-  // {
-  //   "subject": "cs",
-  //   "number": "498aml",
-  //   "formData": {
-  //     "rating" : 1,
-  //       "difficulty": 1,
-  //       "hours" : "1-4",
-  //       "term" : "spring",
-  //       "year" : 2018,
-  //       "professor" : "Ranjitha Kumar",
-  //       "description" : "This is one of my favorite classes at UIUC. It's extremely useful and fun!"
-  //   }
-  // }
 
   // get all reviews for a course id
   router.get("/:id", function(req, res, next) {
