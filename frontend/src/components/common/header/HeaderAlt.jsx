@@ -25,12 +25,12 @@ class HeaderAlt extends Component {
           </a>
           <Menu.Item position="right">
           
-            <Button href="course-reviews/#/login" as="a" inverted={!fixed}>
+            <Button href="/#/login" as="a" inverted={!fixed}>
               Log in
             </Button>
             
             <Button
-            href="course-reviews/#/register"
+            href="/#/register"
               as="a"
               inverted={!fixed}
               primary={fixed}
