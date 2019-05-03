@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Segment, Tab, Menu, Input } from "semantic-ui-react";
+import { Segment, Tab, Menu, Input, Modal, Button } from "semantic-ui-react";
 
 import DiscussionContainer from "./discussion/discussionContainer/DiscussionContainer";
 import ReviewContainer from "./reviews/review/container/ReviewContainer";
@@ -7,6 +7,10 @@ import Ratings from "react-ratings-declarative";
 import axios from "axios";
 import "./course.scss";
 import CourseSearchBar from "../common/courseSearchBar/CourseSearchBar";
+import ReviewForm from "./reviews/reviewForm/ReviewForm";
+import DiscussionForm from "./discussion/discussionForm/DiscussionForm";
+
+
 
 class Course extends Component {
   state = {
@@ -101,11 +105,18 @@ class Course extends Component {
 
   render() {
     if (this.state.display) {
-      let panes = [
+      const panes = [
         {
           menuItem: "Reviews",
           render: () => (
             <Tab.Pane>
+              <Modal trigger={<Button id="new-rev-btn">New Review</Button>}>
+                <Modal.Header>New Review</Modal.Header>
+                <Modal.Content>
+                  <ReviewForm courseNumber={this.props.courseNumber} subject={this.props.subject} />
+                </Modal.Content>
+              </Modal>
+
               <ReviewContainer
                 courseNumber={this.props.match.params.courseNumber}
                 subject={this.props.match.params.subject}
@@ -117,8 +128,14 @@ class Course extends Component {
         },
         {
           menuItem: "Discussion",
-          render: () => (
+          render: () => (        
             <Tab.Pane>
+              <Modal trigger={<Button id="new-post-btn">New Post</Button>}>
+                <Modal.Header>New Post</Modal.Header>
+                <Modal.Content>
+                  <DiscussionForm />
+                </Modal.Content>
+              </Modal>
               <DiscussionContainer
                 courseNumber={this.props.match.params.courseNumber}
                 subject={this.props.match.params.subject}

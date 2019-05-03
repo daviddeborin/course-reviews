@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { List, Button, Modal } from "semantic-ui-react";
-import DiscussionForm from "../discussionForm/DiscussionForm";
+import { List } from "semantic-ui-react";
 import "./DiscussionContainer.scss";
 import axios from "axios";
 
@@ -27,15 +26,7 @@ class DiscussionContainer extends Component {
   render() {
     return (
       <div>
-        {/* button to add post */}
-        <div>
-          <Modal trigger={<Button id="new-post-btn">New Post</Button>}>
-            <Modal.Header>New Post</Modal.Header>
-            <Modal.Content>
-              <DiscussionForm />
-            </Modal.Content>
-          </Modal>
-        </div>
+        
         {/* this is the list of comments  */}
         {this.showDiscussion()}
       </div>
