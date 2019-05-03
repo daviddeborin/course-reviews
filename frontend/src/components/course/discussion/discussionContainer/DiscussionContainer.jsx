@@ -13,7 +13,6 @@ class DiscussionContainer extends Component {
     var url = "http://localhost:9000/comment/" + this.props.courseID;
 
     axios.get(url).then(res => {
-      console.log(res.data);
       this.setState({ DiscussionPosts: res.data });
     });
   }

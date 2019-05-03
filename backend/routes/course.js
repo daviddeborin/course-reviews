@@ -14,9 +14,7 @@ module.exports = db => {
       subject : req.params.subject,
       number : req.params.courseNumber
     }
-    console.log(query, "query");
     db.Course.findOne({where : query}).then(course => {
-      console.log(course, 'course found');
       if (course != null) {
         res.json(course);
       } else {

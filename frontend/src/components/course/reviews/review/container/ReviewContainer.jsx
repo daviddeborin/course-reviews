@@ -14,7 +14,6 @@ class ReviewContainer extends Component {
     var url = "http://localhost:9000/review/" + this.props.courseId;
 
     axios.get(url).then(res => {
-      console.log(res.data);
       this.setState({ Reviews: res.data });
     });
   }

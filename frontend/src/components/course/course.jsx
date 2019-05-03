@@ -18,7 +18,6 @@ class Course extends Component {
   };
 
   componentWillMount() {
-    console.log(this.props.match.params, "course jsx");
     var url =
       "http://localhost:9000/course/" +
       this.props.match.params.subject +
@@ -28,11 +27,9 @@ class Course extends Component {
     axios
       .get(url)
       .then(res => {
-        console.log(res.data, "data");
         this.setState({ courseInfo: res.data, display: true });
       })
       .catch(err => {
-        console.log(err, "error");
         this.setState({ display: false });
       });
   }
@@ -99,6 +96,7 @@ class Course extends Component {
               <ReviewContainer
                 courseNumber={this.props.match.params.courseNumber}
                 subject={this.props.match.params.subject}
+                courseId={this.state.courseInfo.id}
               />
             </Tab.Pane>
           )
@@ -110,6 +108,7 @@ class Course extends Component {
               <DiscussionContainer
                 courseNumber={this.props.match.params.courseNumber}
                 subject={this.props.match.params.subject}
+                courseId={this.state.courseInfo.id}
               />
             </Tab.Pane>
           )
@@ -121,7 +120,7 @@ class Course extends Component {
       if (number !== undefined) {
         number = number.substring(0, 3);
       }
-      
+
       return (
         <div>
           {/*  Course Title  */}
