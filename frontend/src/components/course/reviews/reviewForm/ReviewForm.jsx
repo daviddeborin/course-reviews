@@ -98,7 +98,8 @@ class ReviewForm extends Component {
         number : this.props.courseNumber,
         formData : this.state,
       }).then(function(res) {
-        notify.show("Review sent, please close form", 'success', -1, 'green')
+        window.location.reload();
+
       }).catch(function(err) {
         notify.show("Review was not sent, please try again", 'error', 5000, 'red');
         this.setState({disabled : false});

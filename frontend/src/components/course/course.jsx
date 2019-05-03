@@ -113,7 +113,11 @@ class Course extends Component {
               <Modal trigger={<Button id="new-rev-btn">New Review</Button>}>
                 <Modal.Header>New Review</Modal.Header>
                 <Modal.Content>
-                  <ReviewForm courseNumber={this.props.courseNumber} subject={this.props.subject} courseId = {this.state.courseInfo.id} />
+                  <ReviewForm 
+                    courseNumber={this.props.match.params.courseNumber} 
+                    subject={this.props.match.params.subject} 
+                    courseId = {this.state.courseInfo.id} 
+                  />
                 </Modal.Content>
               </Modal>
 
@@ -133,7 +137,11 @@ class Course extends Component {
               <Modal trigger={<Button id="new-post-btn">New Post</Button>}>
                 <Modal.Header>New Post</Modal.Header>
                 <Modal.Content>
-                  <DiscussionForm />
+                  <DiscussionForm 
+                    courseNumber={this.props.match.params.courseNumber} 
+                    subject={this.props.match.params.subject} 
+                    courseId = {this.state.courseInfo.id}
+                  />
                 </Modal.Content>
               </Modal>
               <DiscussionContainer

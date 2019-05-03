@@ -21,6 +21,7 @@ class Login extends Component {
       password : this.state.password
     })
     .then (function(res) {
+      window.location.href = "/course-reviews/#/courses/";
     })
     .catch (function (err){
       notify.show('Invalid information', 'error', 5000, 'red');

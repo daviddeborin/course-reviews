@@ -8,7 +8,6 @@ module.exports = db => {
     let courseId = req.body.courseId;
     let formData = req.body.formData;
     let hoursCol = "hours_" + formData.hours.replace("-", "_");
-    console.log(req.body);
 
     let userid = null;
     if (req.sessionStore && req.sessionStore.sessions) {

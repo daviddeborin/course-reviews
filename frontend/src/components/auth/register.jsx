@@ -13,7 +13,7 @@ class Register extends Component {
       })
       .then(function(response) {
         //redirect
-        window.location.href = "/login/";
+        window.location.href = "/course-reviews/#/login";
       });
   };
 
