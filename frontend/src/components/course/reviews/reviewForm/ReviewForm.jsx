@@ -92,12 +92,12 @@ class ReviewForm extends Component {
       this.setState({disabled : true})
       notify.show("Sending form, please wait",'success', 5000, 'green');
 
-      /*var url = "http://localhost:9000/review/"
+      /** var url = "http://localhost:9000/review/"
       axios.post(url, {
         subject : this.props.subject,
         courseNumber : this.props.courseNumber,
         formData : this.state,
-      }).then();*/
+      }).then(); */
 
     } else {
       notify.show(canSubmit, "error", 5000, 'red');

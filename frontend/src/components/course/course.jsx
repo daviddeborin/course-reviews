@@ -14,10 +14,11 @@ class Course extends Component {
     avgDifficulty: 4.6,
     avgRating: 1,
     courseInfo: {},
-    display: true
+    display: true,
+    reviews: {}
   };
 
-  componentWillMount() {
+  componentDidMount() {
     var url =
       "http://localhost:9000/course/" +
       this.props.match.params.subject +
@@ -28,10 +29,15 @@ class Course extends Component {
       .get(url)
       .then(res => {
         this.setState({ courseInfo: res.data, display: true });
+        axios.get('http://localhost:9000/review/' + res.data.id).then((res2) => {
+          this.setState({reviews: res2.data});
+          console.log(res2.data);
+        }).catch();
       })
       .catch(err => {
         this.setState({ display: false });
       });
+
   }
 
   getHour = () => {
@@ -53,7 +59,7 @@ class Course extends Component {
       case "1-4":
         return "green";
       case "5-9":
-        return "yellowgreen";
+        return "olive";
       case "10-14":
         return "gold";
       case "15-19":
@@ -88,7 +94,7 @@ class Course extends Component {
 
   render() {
     if (this.state.display) {
-      const panes = [
+      let panes = [
         {
           menuItem: "Reviews",
           render: () => (
@@ -97,6 +103,7 @@ class Course extends Component {
                 courseNumber={this.props.match.params.courseNumber}
                 subject={this.props.match.params.subject}
                 courseId={this.state.courseInfo.id}
+                reviews={this.state.reviews}
               />
             </Tab.Pane>
           )
