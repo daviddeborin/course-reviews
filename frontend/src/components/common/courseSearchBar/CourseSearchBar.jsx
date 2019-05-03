@@ -40,7 +40,7 @@ class CourseSearchBar extends Component {
     this.setState({ isLoading: false, results: [], value: "" });
 
   handleResultSelect = (e, { result }) => {
-    window.location.href = "/courses/" + result.subject + '/' + result.number;
+    window.location.href = "/course-reviews/#/courses/" + result.subject + '/' + result.number;
     this.setState({ value: result.title });
   };
 

@@ -17,7 +17,7 @@ class HeaderAlt extends Component {
         id="header-alt"
       >
         <Container>
-        <a href="/">
+        <a href="/course-reviews/#">
           <Menu.Item position="left" id="header-alt-brand">
             <Icon name="book" />
             CourseReview
