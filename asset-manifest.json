@@ -1,15 +1,15 @@
 {
-  "main.css": "/daviddeborin.github.io/course-reviews/static/css/main.677e931a.chunk.css",
-  "main.js": "/daviddeborin.github.io/course-reviews/static/js/main.9aa9bc29.chunk.js",
-  "main.js.map": "/daviddeborin.github.io/course-reviews/static/js/main.9aa9bc29.chunk.js.map",
-  "runtime~main.js": "/daviddeborin.github.io/course-reviews/static/js/runtime~main.7a76d8b9.js",
-  "runtime~main.js.map": "/daviddeborin.github.io/course-reviews/static/js/runtime~main.7a76d8b9.js.map",
-  "static/js/2.baacb06d.chunk.js": "/daviddeborin.github.io/course-reviews/static/js/2.baacb06d.chunk.js",
-  "static/js/2.baacb06d.chunk.js.map": "/daviddeborin.github.io/course-reviews/static/js/2.baacb06d.chunk.js.map",
-  "index.html": "/daviddeborin.github.io/course-reviews/index.html",
-  "precache-manifest.63e38adc689b48e46f59b121ee640691.js": "/daviddeborin.github.io/course-reviews/precache-manifest.63e38adc689b48e46f59b121ee640691.js",
-  "service-worker.js": "/daviddeborin.github.io/course-reviews/service-worker.js",
-  "static/css/main.677e931a.chunk.css.map": "/daviddeborin.github.io/course-reviews/static/css/main.677e931a.chunk.css.map",
-  "static/media/Header.scss": "/daviddeborin.github.io/course-reviews/static/media/Graviola-Regular.19680293.otf",
-  "static/media/ReviewForm.scss": "/daviddeborin.github.io/course-reviews/static/media/Mosk Normal 400.b290f77a.ttf"
+  "main.css": "./static/css/main.3a88d4ef.chunk.css",
+  "main.js": "./static/js/main.ac7aa886.chunk.js",
+  "main.js.map": "./static/js/main.ac7aa886.chunk.js.map",
+  "runtime~main.js": "./static/js/runtime~main.d653cc00.js",
+  "runtime~main.js.map": "./static/js/runtime~main.d653cc00.js.map",
+  "static/js/2.baacb06d.chunk.js": "./static/js/2.baacb06d.chunk.js",
+  "static/js/2.baacb06d.chunk.js.map": "./static/js/2.baacb06d.chunk.js.map",
+  "index.html": "./index.html",
+  "precache-manifest.c70822a506b7a2d8f7b17147b9685cb5.js": "./precache-manifest.c70822a506b7a2d8f7b17147b9685cb5.js",
+  "service-worker.js": "./service-worker.js",
+  "static/css/main.3a88d4ef.chunk.css.map": "./static/css/main.3a88d4ef.chunk.css.map",
+  "static/media/Header.scss": "./static/media/Graviola-Regular.19680293.otf",
+  "static/media/ReviewForm.scss": "./static/media/Mosk Normal 400.b290f77a.ttf"
 }
