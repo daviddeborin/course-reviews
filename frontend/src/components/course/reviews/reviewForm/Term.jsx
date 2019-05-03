@@ -36,11 +36,15 @@ class Term extends Component {
     };
 
     getProfessors = () => {
+        console.log(this.props.professors.values());
         let i = -1;
-        return this.state.professors.map(prof => {
+        let profobj = []
+        this.props.professors.forEach((prof, prof1, set) => {
+            console.log(prof, prof1, set);
             i++;
-            return { key: i, text: prof, value: prof };
+            profobj.push( { key: i, text: prof, value: prof });
         });
+        return profobj;
     };
 
 

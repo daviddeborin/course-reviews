@@ -46,6 +46,7 @@ class ReviewForm extends Component {
   }
 
   updateDescription = (event, data) => {
+    console.log(this.props, 'container')
     this.setState({review: data.value});
   }
 
@@ -116,7 +117,7 @@ class ReviewForm extends Component {
       <div id="wrapper">
         <div id="review-container">
           <Term 
-            professors={this.professors} 
+            professors={this.props.professors} 
             sendTerm={this.getChildTerm} 
             sendYear={this.getChildYear} 
             sendProfessor={this.getChildProfessor} 

@@ -20,7 +20,8 @@ class Course extends Component {
     courseInfo: {},
     display: true,
     reviews: [],
-    discussionPosts: {}
+    discussionPosts: {},
+    professors : new Set()
   };
 
   componentDidMount() {
@@ -38,6 +39,7 @@ class Course extends Component {
 
         axios.get('http://localhost:9000/review/' + res.data.id).then((res2) => {
           this.setState({reviews: res2.data});
+          this.getProfessors(res2.data);
         }).catch();
 
 
@@ -51,6 +53,15 @@ class Course extends Component {
 
   }
 
+
+  getProfessors(reviews) {
+    console.log(reviews);
+    let set = this.state.professors;
+    reviews.map(review => {
+      set.add(review.professor);
+    })
+    this.setState({professors : set})
+  }
   getHour = () => {
     var counts = [
       this.state.courseInfo.hours_1_4,
@@ -117,6 +128,8 @@ class Course extends Component {
                     courseNumber={this.props.match.params.courseNumber} 
                     subject={this.props.match.params.subject} 
                     courseId = {this.state.courseInfo.id} 
+                    professors = {this.state.professors}
+
                   />
                 </Modal.Content>
               </Modal>
