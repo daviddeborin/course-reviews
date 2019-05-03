@@ -9,8 +9,9 @@ module.exports = (db, passport, LocalStrategy, session) => {
   
 
   router.post('/', function(req, res, next) {
+    console.log(req.user, '\n USER post \n');
+
     passport.authenticate('local', function(err, user, info) {
-      console.log(req);
       if (err) { res.status(404).send(err) }
       if (!user) { res.status(404).send({message : 'no user'}); }
       req.logIn(user, function(err) {

@@ -16,7 +16,8 @@ class Login extends Component {
       notify.show('Please fill out the information', 'error', 5000, 'red');
       return;
     }
-    axios.post('/login', {
+    console.log('state', this.state);
+    axios.post('http://localhost:9000/login', {
       username : this.state.username,
       password : this.state.password
     })
