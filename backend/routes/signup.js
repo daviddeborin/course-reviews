@@ -4,7 +4,6 @@ module.exports = (db, passport, LocalStrategy, session) => {
 
   // add new user
   router.post("/", function(req, res, next) {
-    console.log(req.body);
     db.User.create(req.body).then(err => {
       res.json(err);
     });

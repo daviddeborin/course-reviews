@@ -4,6 +4,13 @@ module.exports = db => {
 
   // get all courses for search bar
   router.get("/", function(req, res, next) {
+    let userid = -1;
+    if (req.sessionStore && req.sessionStore.sessions) {
+      let sess = Object.entries( req.sessionStore.sessions);
+      let len = sess.length;
+      sess = JSON.parse(sess[len - 1][1]);
+      userid = sess.passport.user;
+    }
     db.Course.findAll({}).then(courses => {
       res.json(courses);
     });

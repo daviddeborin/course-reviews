@@ -3,6 +3,11 @@ module.exports = db => {
     username: "David Deborin",
     password: "mayo1234"
   });
+  
+  db.User.create({
+    username : 'David Deborinn',
+    password : 'mayo123'
+  });
 
   db.Course.create({
     number: "498rk1",
@@ -46,7 +51,7 @@ module.exports = db => {
 
   db.Review.create({
     review: "good course",
-    semester_taken: "Spring",
+    term: "Spring",
     course: 1,
     professor: "prof smith",
     user: 1,
@@ -57,7 +62,7 @@ module.exports = db => {
 
   db.Review.create({
     review: "good course",
-    semester_taken: "Fall",
+    term: "Fall",
     course: 2,
     professor: "prof smith",
     user: 1,

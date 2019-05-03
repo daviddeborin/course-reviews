@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form, Button, Grid, TextArea } from "semantic-ui-react";
 import Notifications, {notify} from 'react-notify-toast';
+import axios from 'axios';
 
 import DifficultyRating from "./DifficultyRating";
 import ClassRating from "./ClassRating";
@@ -90,17 +91,18 @@ class ReviewForm extends Component {
       this.setState({disabled : true})
       notify.show("Sending form, please wait",'success', 5000, 'green');
 
-      /** var url = "http://localhost:9000/review/"
+      var url = "http://localhost:9000/review/"
       axios.post(url, {
+        courseId: this.props.courseId,
         subject : this.props.subject,
         number : this.props.courseNumber,
         formData : this.state,
-      }).then(function(res) => {
-        notify.show("Review sent, please close form", 'success, -1, 'green')
-      }).catch(function(err) => {
+      }).then(function(res) {
+        notify.show("Review sent, please close form", 'success', -1, 'green')
+      }).catch(function(err) {
         notify.show("Review was not sent, please try again", 'error', 5000, 'red');
         this.setState({disabled : false});
-      }); */
+      });
 
     } else {
       notify.show(canSubmit, "error", 5000, 'red');

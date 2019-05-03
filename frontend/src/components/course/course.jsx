@@ -113,7 +113,7 @@ class Course extends Component {
               <Modal trigger={<Button id="new-rev-btn">New Review</Button>}>
                 <Modal.Header>New Review</Modal.Header>
                 <Modal.Content>
-                  <ReviewForm courseNumber={this.props.courseNumber} subject={this.props.subject} />
+                  <ReviewForm courseNumber={this.props.courseNumber} subject={this.props.subject} courseId = {this.state.courseInfo.id} />
                 </Modal.Content>
               </Modal>
 

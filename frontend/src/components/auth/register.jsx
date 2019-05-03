@@ -12,7 +12,6 @@ class Register extends Component {
         password: document.getElementById("password").value
       })
       .then(function(response) {
-        console.log(response);
         //redirect
         window.location.href = "/login/";
       });
