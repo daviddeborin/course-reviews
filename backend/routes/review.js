@@ -21,7 +21,7 @@ module.exports = db => {
 
     db.Review.create({
       review: formData.review,
-      term: formData.term,
+      term: formData.term + ' ' + formData.year,
       course: courseId,
       professor: formData.professor,
       user: userid,

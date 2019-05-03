@@ -3,31 +3,10 @@ import React, { Component } from "react";
 import { Segment} from "semantic-ui-react";
 
 class Review extends Component {
-  state = {
-    termTaken: 'SP17',
-    professor: 'Jaskirat Vig',
-    overallRating: '7.8',
-    review: "This was a v nice class. Gr8 job.",
-  };
-
-  /*getRatingColor = (border, rating = false) => {
-    let diff = this.state.overallRating;
-    if (diff > 8) {
-      return 'green';
-    }
-    if (diff > 6) {
-      return 'yellowgreen';
-    }
-    if (diff > 4) {
-      return 'gold';
-    }
-    if (diff > 2) {
-      return 'orange';
-    }
-    return 'red';
-  }*/
 
   render() {
+    console.log(this.props.data);
+    let data = this.props.data;
     return (
       <div>
 
@@ -36,21 +15,21 @@ class Review extends Component {
           <Segment className='metric' textAlign='center'>
             Term Taken
             <Segment className='centerMetric' >
-              {this.state.termTaken}
+              {data.term}
             </Segment>
           </Segment>
 
           <Segment className='metric' textAlign='center'>
             Professor
             <Segment className='centerMetric'>
-                {this.state.professor}
+                {data.professor}
             </Segment>
           </Segment>
 
           <Segment className='metric' textAlign='center'>
             Overall Rating
             <Segment className='centerMetric' /*color={this.getRatingColor(true)}*/>
-              {this.state.overallRating}
+              {data.rating}
             </Segment>
           </Segment>
         </Segment.Group>
@@ -59,7 +38,7 @@ class Review extends Component {
         <Segment className='metric' textAlign='center'>
             Review
             <Segment className='centerMetric' >
-              {this.state.review}
+              {data.review}
             </Segment>
           </Segment>
         </Segment.Group>

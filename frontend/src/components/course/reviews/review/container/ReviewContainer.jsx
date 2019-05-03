@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { List } from "semantic-ui-react";
 import Review from "../Review";
 import "./ReviewContainer.scss";
-import axios from "axios";
 
 class ReviewContainer extends Component {
 
