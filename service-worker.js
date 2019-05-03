@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/daviddeborin.github.io/course-reviews/precache-manifest.ac331ee7880598f0aae45dc05e156e84.js"
+  "/daviddeborin.github.io/course-reviews/precache-manifest.63e38adc689b48e46f59b121ee640691.js"
 );
 
 workbox.clientsClaim();

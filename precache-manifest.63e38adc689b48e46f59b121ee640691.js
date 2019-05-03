@@ -16,19 +16,19 @@ self.__precacheManifest = [
     "url": "/daviddeborin.github.io/course-reviews/static/js/runtime~main.7a76d8b9.js"
   },
   {
-    "revision": "1ce48e73a9b48888dbb2",
-    "url": "/daviddeborin.github.io/course-reviews/static/js/main.b23071d8.chunk.js"
+    "revision": "6209c777b5a267aaf9fa",
+    "url": "/daviddeborin.github.io/course-reviews/static/js/main.9aa9bc29.chunk.js"
   },
   {
     "revision": "29c599e2d71cb50db43b",
     "url": "/daviddeborin.github.io/course-reviews/static/js/2.baacb06d.chunk.js"
   },
   {
-    "revision": "1ce48e73a9b48888dbb2",
-    "url": "/daviddeborin.github.io/course-reviews/static/css/main.6c823e2c.chunk.css"
+    "revision": "6209c777b5a267aaf9fa",
+    "url": "/daviddeborin.github.io/course-reviews/static/css/main.677e931a.chunk.css"
   },
   {
-    "revision": "1723be9a2e7ea426462588016084d992",
+    "revision": "02e06d88afa40522a6285bd89593b0b8",
     "url": "/daviddeborin.github.io/course-reviews/index.html"
   }
 ];
