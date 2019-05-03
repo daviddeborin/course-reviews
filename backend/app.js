@@ -4,9 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var bodyParser = require("body-parser");
-
 var db = require("./index");
-
 var app = express();
 
 // view engine setup
@@ -39,10 +37,19 @@ app.use(
 );
 app.use(bodyParser.json());
 
+// Passport
+var passport = require("passport");
+var LocalStrategy = require("passport-local").Strategy;
+var session = require("express-session");
+
+app.use(session({ secret: "mayo" }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Calling the different routes and passing the db
 app.use("/course", require("./routes/course")(db));
-app.use("/login", require("./routes/login")(db));
-app.use("/signup", require("./routes/signup")(db));
+app.use("/login", require("./routes/login")(db, passport, LocalStrategy, session));
+app.use("/signup", require("./routes/signup")(db, passport, LocalStrategy, session));
 app.use("/comment", require("./routes/comment")(db));
 app.use("/review", require("./routes/review")(db));
 

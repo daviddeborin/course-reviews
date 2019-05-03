@@ -1,4 +1,4 @@
-module.exports = db => {
+module.exports = (db, passport, LocalStrategy, session) => {
   var express = require("express");
   var router = express.Router();
 
