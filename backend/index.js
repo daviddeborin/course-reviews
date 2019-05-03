@@ -32,6 +32,12 @@ var Course = sequelize.define("Course", {
 var User = sequelize.define("User", {
   username: Sequelize.STRING,
   password: Sequelize.STRING
+}, {
+  classMethods: {
+    validPassword : function(password, user) {
+      return (user.password === password);
+    }
+  }
 });
 
 var Comment = sequelize.define("Comment", {

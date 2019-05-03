@@ -51,7 +51,7 @@ class CourseSearchBar extends Component {
       if (this.state.value.length < 1) return this.resetComponent();
 
       const re = new RegExp(_.escapeRegExp(this.state.value), "i");
-      const isMatch = result => re.test(result.title) || re.test(result.number.substring(0,3)) || re.test(result.subject); // we would put our conditionals/ filters here
+      const isMatch = result => re.test(result.title) || re.test(result.number) || re.test(result.subject); // we would put our conditionals/ filters here
 
       let res = _.filter(this.state.origData, isMatch);
       let resobj = res.map(item => {

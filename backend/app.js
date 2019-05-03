@@ -69,4 +69,28 @@ app.use(function(err, req, res, next) {
   res.render("error");
 });
 
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    db.User.findOne({where : {username: username}}).then(function (user) {
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user._modelOptions.classMethods.validPassword(password, user.dataValues)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
+
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
 module.exports = app;

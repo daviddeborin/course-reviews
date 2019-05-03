@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { Form, Button, Grid, TextArea } from "semantic-ui-react";
 import Notifications, {notify} from 'react-notify-toast';
-import axios from "axios";
 
 import DifficultyRating from "./DifficultyRating";
 import ClassRating from "./ClassRating";
 import Hours from "./Hours";
 import Term from "./Term";
-import App from "../../../../App"
 
 import "./ReviewForm.scss";
 
