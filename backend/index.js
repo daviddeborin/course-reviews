@@ -91,6 +91,7 @@ db.Comment = Comment;
 db.Review = Review;
 db.User = User;
 
+// force true deletes everything on startup
 sequelize.sync({ force: true }).then(
   function(err) {
     console.log("sql has been synced");

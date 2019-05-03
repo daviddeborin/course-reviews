@@ -6,7 +6,7 @@ module.exports = db => {
 
   db.Course.create({
     number: "498rk1",
-    subject: "CS",
+    subject: "cs",
     title: "The Art of Web Programming",
     rating: 5,
     difficulty: 3,
@@ -20,7 +20,7 @@ module.exports = db => {
 
   db.Course.create({
     number: "498aml",
-    subject: "CS",
+    subject: "cs",
     title: "Applied Machine Learning",
     rating: 5,
     difficulty: 3,
@@ -46,6 +46,7 @@ module.exports = db => {
 
   db.Review.create({
     review: "good course",
+    semester_taken: "Spring",
     course: 1,
     professor: "prof smith",
     user: 1,
@@ -56,6 +57,7 @@ module.exports = db => {
 
   db.Review.create({
     review: "good course",
+    semester_taken: "Fall",
     course: 2,
     professor: "prof smith",
     user: 1,

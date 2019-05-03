@@ -19,7 +19,7 @@ class ReviewForm extends Component {
       term : '',
       year : '',
       professor : '',
-      description : '',
+      review : '',
       disabled : false
     }
   }
@@ -45,11 +45,11 @@ class ReviewForm extends Component {
   }
 
   updateDescription = (event, data) => {
-    this.setState({description: data.value});
+    this.setState({review: data.value});
   }
 
   checkComplete = () => {
-    let {rating, difficulty, hours, term, year, professor, description} = this.state;
+    let {rating, difficulty, hours, term, year, professor, review} = this.state;
     let message = "You are missing the following fields: \t"
     let missing = [];
 
@@ -62,7 +62,7 @@ class ReviewForm extends Component {
     if (professor === '') {
       missing.push('Professor');
     }
-    if (description === '') {
+    if (review === '') {
       missing.push('Description');
     }
    
