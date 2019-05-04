@@ -12,21 +12,21 @@ class Review extends Component {
 
         {/*  Metrics Dashboard   */}
         <Segment.Group horizontal>
-          <Segment className='metric' textAlign='center'>
+          <Segment color="blue" className='metric' textAlign='center'>
             Term Taken
             <Segment className='centerMetric' >
               {data.term}
             </Segment>
           </Segment>
 
-          <Segment className='metric' textAlign='center'>
+          <Segment color="yellow" className='metric' textAlign='center'>
             Professor
             <Segment className='centerMetric'>
                 {data.professor}
             </Segment>
           </Segment>
 
-          <Segment className='metric' textAlign='center'>
+          <Segment color="purple" className='metric' textAlign='center'>
             Overall Rating
             <Segment className='centerMetric' /*color={this.getRatingColor(true)}*/>
               {data.rating}
