@@ -52,6 +52,7 @@ module.exports = db => {
 
   let termsList = ["Spring", "Fall", 'Winter', 'Summer'];
   let hoursList = ["1-4", '5-9', '10-14', '15-19', '20'];
+  let yearsList = ['2016', '2017', '2018', '2019'];
 
   let coursesList = [];
 
@@ -88,15 +89,20 @@ module.exports = db => {
     let title = coursesList[i].title;
     let numReviews = Math.floor(Math.random() * 15) + 1;
 
+    // temporary
+    let rating2 = Math.floor(Math.random() * 4) + 2;
+    let difficulty2 = Math.floor(Math.random() * 5) + 2; // [1, 6)
+
+
     db.Course.create({
       number: num,
       subject: subject,
       title: title,
-      rating: 0,
-      difficulty: 0,
+      rating: rating2,
+      difficulty: difficulty2,
       number_of_reviews: 0,
       hours_1_4: 0,
-      hours_5_9: 0,
+      hours_5_9: 1,
       hours_10_14: 0,
       hours_15_19: 0,
       hours_20: 0
@@ -114,7 +120,7 @@ module.exports = db => {
 
       db.Review.create({
         review: reviewsList[reviewIndex],
-        term: termsList[termsIndex],
+        term: termsList[termsIndex] + " " + yearsList[Math.floor(Math.random() * yearsList.length)],
         course: i + 1,
         professor: profs[profsIndex],
         user: null,
