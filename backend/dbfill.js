@@ -86,7 +86,7 @@ module.exports = db => {
     let num = coursesList[i].number;
     let subject = coursesList[i].subject;
     let title = coursesList[i].title;
-    let numReviews = Math.floor(Math.random() * 10) + 1;
+    let numReviews = Math.floor(Math.random() * 15) + 1;
 
     db.Course.create({
       number: num,
