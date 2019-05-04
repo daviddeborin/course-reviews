@@ -31,11 +31,21 @@ module.exports = db => {
     });
     // update the proper hours/wk range col AND ++num_of_reviews column
     // retrieve the course's ID as well
+    console.log('here');
     db.Course.findOne({
       where: { id: courseId }
     })
       .then(course => {
-        console.log("hi1");
+        let reviews = course.dataValues.number_of_reviews;
+        let oldRating = course.dataValues.rating * reviews;
+        let oldDifficulty = course.dataValues.difficulty * reviews;
+        reviews += 1;
+        let newRating = (oldRating + formData.rating) / reviews;
+        let newDifficulty = (oldDifficulty + formData.difficulty) / reviews;
+        course.updateAttributes( {
+          rating : newRating,
+          difficulty : newDifficulty,
+        });
         return course.increment([hoursCol, "number_of_reviews"], { by: 1 });
       })
       .then(course => {

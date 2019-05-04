@@ -46,7 +46,6 @@ class ReviewForm extends Component {
   }
 
   updateDescription = (event, data) => {
-    console.log(this.props, 'container')
     this.setState({review: data.value});
   }
 

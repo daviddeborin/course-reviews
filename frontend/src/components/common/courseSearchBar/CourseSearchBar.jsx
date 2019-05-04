@@ -41,6 +41,10 @@ class CourseSearchBar extends Component {
 
   handleResultSelect = (e, { result }) => {
     window.location.href = "/course-reviews/#/courses/" + result.subject + '/' + result.number;
+    
+    if (!this.props.atHome) {
+      window.location.reload();
+    }
     this.setState({ value: result.title });
   };
 
@@ -56,7 +60,7 @@ class CourseSearchBar extends Component {
       let res = _.filter(this.state.origData, isMatch);
       let resobj = res.map(item => {
         return {
-          title : item.subject + item.number.substring(0,3), 
+          title : item.subject.toUpperCase() + item.number.substring(0,3), 
           description: item.title, 
           subject: item.subject,
           number: item.number 

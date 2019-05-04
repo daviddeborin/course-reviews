@@ -4,7 +4,6 @@ module.exports = db => {
 
   router.post("/", function(req, res, next) {
 
-    console.log(req.body);
     let userid = null;
     if (req.sessionStore && req.sessionStore.sessions) {
       let sess = Object.entries(req.sessionStore.sessions);

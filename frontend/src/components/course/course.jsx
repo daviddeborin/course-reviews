@@ -55,7 +55,6 @@ class Course extends Component {
 
 
   getProfessors(reviews) {
-    console.log(reviews);
     let set = this.state.professors;
     reviews.map(review => {
       set.add(review.professor);
@@ -180,11 +179,11 @@ class Course extends Component {
           {/* <h1>CS 498 Applied Machine Learning</h1> */}
           <Menu borderless>
             <Menu.Item position="left">
-              <h1>{courseInfo.subject + number + " " + courseInfo.title}</h1>
+              <h1>{(courseInfo.subject ? courseInfo.subject.toUpperCase() : courseInfo.subject) + number + " " + courseInfo.title}</h1>
             </Menu.Item>
 
             <Menu.Item position="right">
-              <CourseSearchBar />
+              <CourseSearchBar atHome={false}/>
             </Menu.Item>
           </Menu>
 

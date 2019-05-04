@@ -9,7 +9,7 @@ class HomePage extends Component {
     return (
       <div>
         <div id="search-container">
-          <CourseSearchBar />
+          <CourseSearchBar atHome={true} />
         </div>
       </div>
     );

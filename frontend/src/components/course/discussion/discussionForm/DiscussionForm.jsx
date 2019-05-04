@@ -30,7 +30,6 @@ class DiscussionForm extends Component {
       
       window.location.reload();
     }).catch (function (err) {
-      console.log('err', err);
       notify.show('Comment was not posted, please try again', 'error', 5000, 'red');
     })
   }
