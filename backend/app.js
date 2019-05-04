@@ -46,9 +46,6 @@ app.use(allowCrossDomain);
 
 // Use the body-parser package in our application
 
-
-
-
 // Calling the different routes and passing the db
 app.use("/course", require("./routes/course")(db));
 app.use("/login", require("./routes/login")(db, passport, LocalStrategy, session));
