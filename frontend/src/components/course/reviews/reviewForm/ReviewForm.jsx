@@ -88,10 +88,17 @@ class ReviewForm extends Component {
     let canSubmit = this.checkComplete();
     if (canSubmit === true) {
        // SEND FORM
+      let oldthis = this;
       this.setState({disabled : true})
       notify.show("Sending form, please wait",'success', 5000, 'green');
+      console.log({
+        courseId: this.props.courseId,
+        subject : this.props.subject,
+        number : this.props.courseNumber,
+        formData : this.state,
+      })
 
-      var url = "http://localhost:9000/review/"
+      var url = "http://3.15.14.122:9000/review/"
       axios.post(url, {
         courseId: this.props.courseId,
         subject : this.props.subject,
@@ -102,7 +109,7 @@ class ReviewForm extends Component {
 
       }).catch(function(err) {
         notify.show("Review was not sent, please try again", 'error', 5000, 'red');
-        this.setState({disabled : false});
+        oldthis.setState({disabled : false});
       });
 
     } else {

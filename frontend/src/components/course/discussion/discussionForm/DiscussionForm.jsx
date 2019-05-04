@@ -23,7 +23,7 @@ class DiscussionForm extends Component {
     } 
 
     notify.show('Sending comment please wait', 'success', 5000, 'green');
-    axios.post("http://localhost:9000/comment/", {
+    axios.post("http://3.15.14.122:9000/comment/", {
       courseId : this.props.courseId,
       comment : this.state.comment
     }).then (() =>  {

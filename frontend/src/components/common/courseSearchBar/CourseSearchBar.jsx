@@ -25,7 +25,7 @@ class CourseSearchBar extends Component {
   }
 
   componentWillMount() {
-    axios.get("http://localhost:9000/course").then(res => {
+    axios.get("http://3.15.14.122:9000/course").then(res => {
       this.setState({ origData: res.data });
     });
   }

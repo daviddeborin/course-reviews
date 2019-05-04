@@ -26,7 +26,7 @@ class Course extends Component {
 
   componentDidMount() {
     var url =
-      "http://localhost:9000/course/" +
+      "http://3.15.14.122:9000/course/" +
       this.props.match.params.subject +
       "/" +
       this.props.match.params.courseNumber;
@@ -37,13 +37,13 @@ class Course extends Component {
         this.setState({ courseInfo: res.data, display: true });
 
 
-        axios.get('http://localhost:9000/review/' + res.data.id).then((res2) => {
+        axios.get('http://3.15.14.122:9000/review/' + res.data.id).then((res2) => {
           this.setState({reviews: res2.data});
           this.getProfessors(res2.data);
         }).catch();
 
 
-        axios.get("http://localhost:9000/comment/" + res.data.id).then(res2 => {
+        axios.get("http://3.15.14.122:9000/comment/" + res.data.id).then(res2 => {
           this.setState({ discussionPosts: res2.data });
         }).catch();
       })

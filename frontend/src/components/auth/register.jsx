@@ -7,7 +7,7 @@ class Register extends Component {
 
   handleSubmit = () => {
     axios
-      .post("http://localhost:9000/signup/", {
+      .post("http://3.15.14.122:9000/signup/", {
         username: document.getElementById("username").value,
         password: document.getElementById("password").value
       })
