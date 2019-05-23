@@ -11,7 +11,6 @@ import ReviewForm from "./reviews/reviewForm/ReviewForm";
 import DiscussionForm from "./discussion/discussionForm/DiscussionForm";
 
 
-
 class Course extends Component {
   state = {
     avgHours: "1-4",
@@ -128,7 +127,7 @@ class Course extends Component {
                     subject={this.props.match.params.subject} 
                     courseId = {this.state.courseInfo.id} 
                     professors = {this.state.professors}
-
+                    // Hi
                   />
                 </Modal.Content>
               </Modal>
